@@ -11,5 +11,5 @@ import UIKit
     func setupHierarchy()
     func setupConstraints()
     @objc optional func setupTableView()
-    func setupUI()
+    @objc optional func setupUI()
 }
