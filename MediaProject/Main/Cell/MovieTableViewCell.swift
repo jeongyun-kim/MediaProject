@@ -10,30 +10,19 @@ import Kingfisher
 import SnapKit
 
 class MovieTableViewCell: UITableViewCell, SetupView {
-   
-    let releaseDate: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .lightGray
-        label.text = "2020/12/23"
-        return label
-    }()
     
-    let genreLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.text = "#Mystery"
-        return label
-    }()
-    
+    let releaseDate = Custom.configureLabel(text: "개봉일", size: 13, color: .lightGray)
+
+    let genreLabel = Custom.configureLabel(text: "#장르", size: 16, weight: .bold)
+
     let movieView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = Custom.cornerRadius
         view.layer.shadowOpacity = 1
         view.backgroundColor = .white
         view.layer.shadowOffset = .zero
         view.layer.shadowColor = UIColor.lightGray.cgColor
-        view.layer.shadowRadius = 10
+        view.layer.shadowRadius = Custom.cornerRadius
         return view
     }()
     
@@ -41,40 +30,19 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray5
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = Custom.cornerRadius
         imageView.layer.masksToBounds = true
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // 좌우상단만 깎기 
         return imageView
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Alice in Borderland"
-        label.font = UIFont.systemFont(ofSize: 18)
-        //label.backgroundColor = .white
-        return label
-    }()
+    let titleLabel = Custom.configureLabel(size: 18)
     
-    let descLabel: UILabel = {
-        let label = UILabel()
-        label.text = "fmadfmadmfamdfkamfk"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .lightGray
-        return label
-    }()
+    let descLabel = Custom.configureLabel(size: 16, color: .lightGray)
+
+    let border = Custom.makeBorder(.darkGray)
     
-    let border: UIView = {
-        let view = UIView()
-        view.backgroundColor = .darkGray
-        return view
-    }()
-    
-    let moreLabel: UILabel = {
-        let label = UILabel()
-        label.text = "자세히 보기"
-        label.font = UIFont.systemFont(ofSize: 13)
-        return label
-    }()
+    let moreLabel = Custom.configureLabel(text: "자세히 보기", size: 13)
     
     let moreImageView: UIImageView = {
         let imageView = UIImageView()
@@ -90,25 +58,10 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         return stackView
     }()
     
-    let gradeStrLabel: UILabel = {
-        let label = UILabel()
-        label.text = "평점"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textAlignment = .center
-        label.backgroundColor = .systemTeal
-        return label
-    }()
-    
-    let gradeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "8.8"
-        label.backgroundColor = .white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 13)
-        return label
-    }()
-    
+    let gradeStrLabel = Custom.configureLabel(text: "평점", size: 13, color: .white)
+
+    let gradeLabel = Custom.configureLabel(size: 13)
+ 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupHierarchy()
@@ -192,6 +145,11 @@ class MovieTableViewCell: UITableViewCell, SetupView {
     
     private func configureLayout() {
         self.selectionStyle = .none
+        [gradeStrLabel, gradeLabel].forEach { label in
+            label.textAlignment = .center
+        }
+        gradeStrLabel.backgroundColor = .systemTeal
+        gradeLabel.backgroundColor = .white
     }
     
     func configureCell(_ data: Movie, _ genreDict: [Int: String]) {

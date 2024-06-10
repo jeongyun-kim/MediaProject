@@ -21,6 +21,8 @@
 		E0A881B52C16DC7A00538021 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881B42C16DC7A00538021 /* Movie.swift */; };
 		E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */; };
 		E0A881BB2C16F7F600538021 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E0A881BA2C16F7F600538021 /* Kingfisher */; };
+		E0A881BD2C170AF800538021 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BC2C170AF700538021 /* Components.swift */; };
+		E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		E0A881AA2C16DA4F00538021 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		E0A881B42C16DC7A00538021 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		E0A881BC2C170AF700538021 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				E0A881982C16D76100538021 /* LaunchScreen.storyboard */,
 				E0A8819B2C16D76100538021 /* Info.plist */,
 				E0A881A32C16D95A00538021 /* APIKey.swift */,
+				E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */,
+				E0A881BC2C170AF700538021 /* Components.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -207,7 +213,9 @@
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
+				E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
+				E0A881BD2C170AF800538021 /* Components.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
