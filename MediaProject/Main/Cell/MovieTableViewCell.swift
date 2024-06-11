@@ -157,7 +157,9 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         
         gradeLabel.text = String(format: "%.1f", data.vote_average)
         
-        TMDB.imagePath = data.poster_path
+        if let imagePath = data.poster_path {
+            TMDB.imagePath = imagePath
+        }
         movieImageView.kf.setImage(with: TMDB.movieImageUrl)
         
         titleLabel.text = data.title
@@ -165,7 +167,8 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         descLabel.text = data.overview
         
         var text = ""
-        data.genre_ids.forEach {
+        let genres = data.genre_ids?.compactMap { $0 }
+        genres?.forEach {
             if let genre = genreDict[$0] {
                 text += "#\(genre) "
             }

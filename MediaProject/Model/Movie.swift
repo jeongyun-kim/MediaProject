@@ -8,22 +8,23 @@
 import Foundation
 import Alamofire
 
+// MARK: 트렌드 영화
 struct MovieContainer: Decodable {
     let page: Int
     let results: [Movie]
 }
 
 struct Movie: Decodable {
-    let backdrop_path: String
+    let backdrop_path: String?
     let id: Int
     let original_title: String
     let overview: String
-    let poster_path: String
-    //let media_type: String
+    let poster_path: String?
+    let media_type: String?
     let adult: Bool
     let title: String
     let original_language: String
-    let genre_ids: [Int]
+    let genre_ids: [Int]?
     let popularity: Double
     let release_date: String
     let video: Bool
@@ -31,6 +32,8 @@ struct Movie: Decodable {
     let vote_count: Int
 }
 
+
+// MARK: 장르
 struct Genres: Decodable {
     let genres: [Genre]
     
@@ -49,3 +52,13 @@ struct Genre: Decodable {
 }
 
 
+// MARK: 영화 포스터 
+struct MoviePosterContainer: Decodable {
+    let page: Int
+    let results: [MoviePoster]
+    let total_pages: Int
+}
+
+struct MoviePoster: Decodable {
+    let poster_path: String?
+}

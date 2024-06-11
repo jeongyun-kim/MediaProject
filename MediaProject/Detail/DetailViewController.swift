@@ -17,7 +17,9 @@ class DetailViewController: UIViewController, SetupView {
     lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        TMDB.imagePath = movie!.backdrop_path
+        if let imagePath = movie!.backdrop_path {
+            TMDB.imagePath = imagePath
+        }
         imageView.kf.setImage(with: TMDB.movieImageUrl)
         return imageView
     }()
@@ -26,7 +28,8 @@ class DetailViewController: UIViewController, SetupView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemRed
-        TMDB.imagePath = movie!.poster_path
+        guard let imagePath = movie!.poster_path else { return imageView }
+        TMDB.imagePath = imagePath
         imageView.kf.setImage(with: TMDB.movieImageUrl)
         return imageView
     }()
