@@ -18,6 +18,7 @@ class SearchViewController: UIViewController, SetupView {
         setupHierarchy()
         setupConstraints()
         setupUI()
+        setupCollectionView()
     }
     
     func setupHierarchy() {
@@ -37,23 +38,41 @@ class SearchViewController: UIViewController, SetupView {
         }
     }
     
-    static func collectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 8
-        
-        let size = (UIScreen.main.bounds.width - 48) / 3
-        layout.itemSize = CGSize(width: size, height: size)
-        
-        return layout
+        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
     
     func setupUI() {
         view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .systemRed
-        navigationItem.title = "검색"
+        navigationItem.title = "영화 검색"
+    }
+    
+    static func collectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+        
+        let size = (UIScreen.main.bounds.width - 48) / 3
+        layout.itemSize = CGSize(width: size, height: size*1.5)
+        
+        return layout
     }
 
+}
+
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as! SearchCollectionViewCell
+        return cell
+    }
 }

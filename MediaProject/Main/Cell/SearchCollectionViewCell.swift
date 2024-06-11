@@ -9,12 +9,12 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     
-    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -30,7 +30,7 @@ class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     
     func setupConstraints() {
         imageView.snp.makeConstraints {
-            $0.edges.equalTo(imageView)
+            $0.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
     }
     
