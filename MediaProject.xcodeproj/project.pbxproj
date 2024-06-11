@@ -27,6 +27,7 @@
 		E0A881C42C1718CF00538021 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C32C1718CF00538021 /* Actor.swift */; };
 		E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C92C1723E800538021 /* CastingTableViewCell.swift */; };
 		E0A881D52C18500900538021 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881D42C18500900538021 /* SearchViewController.swift */; };
+		E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		E0A881C32C1718CF00538021 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		E0A881C92C1723E800538021 /* CastingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingTableViewCell.swift; sourceTree = "<group>"; };
 		E0A881D42C18500900538021 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */,
 				E0A881BC2C170AF700538021 /* Components.swift */,
+				E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				E0A881BD2C170AF800538021 /* Components.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
+				E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
