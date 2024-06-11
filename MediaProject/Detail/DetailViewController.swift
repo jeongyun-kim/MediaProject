@@ -36,7 +36,9 @@ class DetailViewController: UIViewController, SetupView {
     
     lazy var movieTitleLabel = Custom.configureLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
     
-    lazy var overviewLabel = Custom.configureLabel(text: "줄거리", size: 16, color: .lightGray, weight: .bold)
+    lazy var overviewLabel = Custom.configureLabel(text: "줄거리", size: 16)
+    
+    lazy var overviewContentLabel = Custom.configureLabel(size: 14, color: .lightGray)
     
     lazy var tableView = UITableView()
     
@@ -61,8 +63,9 @@ class DetailViewController: UIViewController, SetupView {
         view.addSubview(mainImageView)
         view.addSubview(movieTitleLabel)
         view.addSubview(posterImageView)
+        view.addSubview(overviewContentLabel)
         view.addSubview(tableView)
-        //view.addSubview(overviewLabel)
+        view.addSubview(overviewLabel)
     }
     
     func setupConstraints() {
@@ -83,12 +86,19 @@ class DetailViewController: UIViewController, SetupView {
             $0.bottom.equalTo(mainImageView.snp.bottom).inset(8)
         }
         
-//        overviewLabel.snp.makeConstraints {
-//            $0.leading.equalTo(posterImageView)
-//            $0.top.equalTo(mainImageView.snp.bottom).offset(16)
-//        }
+        overviewLabel.snp.makeConstraints {
+            $0.leading.equalTo(posterImageView)
+            $0.top.equalTo(mainImageView.snp.bottom).offset(16)
+        }
+        
+        overviewContentLabel.snp.makeConstraints {
+            $0.leading.equalTo(overviewLabel.snp.leading)
+            $0.top.equalTo(overviewLabel.snp.bottom).offset(4)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(mainImageView.snp.bottom)
+            $0.top.equalTo(overviewContentLabel.snp.bottom).offset(12)
             $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -97,9 +107,7 @@ class DetailViewController: UIViewController, SetupView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CastingTableViewCell.self, forCellReuseIdentifier: CastingTableViewCell.identifier)
-        //tableView.rowHeight = 150
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 120
     }
     
     private func fetchCasting() {
@@ -115,6 +123,8 @@ class DetailViewController: UIViewController, SetupView {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
+        overviewContentLabel.numberOfLines = 0
+        overviewContentLabel.text = movie?.overview
     }
 }
 
