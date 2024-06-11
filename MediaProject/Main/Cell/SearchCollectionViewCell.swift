@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     
@@ -32,6 +33,11 @@ class SearchCollectionViewCell: UICollectionViewCell, SetupView {
         imageView.snp.makeConstraints {
             $0.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
+    }
+    
+    func configureCell(_ data: String) {
+        TMDB.imagePath = data
+        imageView.kf.setImage(with: TMDB.movieImageUrl)
     }
     
     required init?(coder: NSCoder) {
