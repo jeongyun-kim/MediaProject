@@ -11,7 +11,6 @@ import Alamofire
 struct MovieContainer: Decodable {
     let page: Int
     let results: [Movie]
-    
 }
 
 struct Movie: Decodable {

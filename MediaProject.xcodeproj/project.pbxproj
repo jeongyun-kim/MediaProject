@@ -23,6 +23,10 @@
 		E0A881BB2C16F7F600538021 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E0A881BA2C16F7F600538021 /* Kingfisher */; };
 		E0A881BD2C170AF800538021 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BC2C170AF700538021 /* Components.swift */; };
 		E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */; };
+		E0A881C22C1716ED00538021 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C12C1716ED00538021 /* DetailViewController.swift */; };
+		E0A881C42C1718CF00538021 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C32C1718CF00538021 /* Actor.swift */; };
+		E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C92C1723E800538021 /* CastingTableViewCell.swift */; };
+		E0A881D52C18500900538021 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881D42C18500900538021 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		E0A881BC2C170AF700538021 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		E0A881C12C1716ED00538021 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E0A881C32C1718CF00538021 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		E0A881C92C1723E800538021 /* CastingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingTableViewCell.swift; sourceTree = "<group>"; };
+		E0A881D42C18500900538021 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 		E0A8818C2C16D76000538021 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				E0A881C02C1716DE00538021 /* Detail */,
 				E0A881B32C16DC6100538021 /* Model */,
 				E0A881A72C16DA0500538021 /* Protocol */,
 				E0A881AC2C16DA8500538021 /* Main */,
@@ -105,6 +114,7 @@
 			children = (
 				E0A881B62C16E89100538021 /* Cell */,
 				E0A881A52C16D9FF00538021 /* MainViewController.swift */,
+				E0A881D42C18500900538021 /* SearchViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -113,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A881B42C16DC7A00538021 /* Movie.swift */,
+				E0A881C32C1718CF00538021 /* Actor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,6 +133,23 @@
 			children = (
 				E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */,
 				E0A881BC2C170AF700538021 /* Components.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E0A881C02C1716DE00538021 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E0A881C62C1722D400538021 /* Cell */,
+				E0A881C12C1716ED00538021 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		E0A881C62C1722D400538021 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E0A881C92C1723E800538021 /* CastingTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -207,15 +235,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A881C22C1716ED00538021 /* DetailViewController.swift in Sources */,
 				E0A881B52C16DC7A00538021 /* Movie.swift in Sources */,
 				E0A881A92C16DA1800538021 /* ReusableIdentifier.swift in Sources */,
+				E0A881C42C1718CF00538021 /* Actor.swift in Sources */,
 				E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */,
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
+				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
 				E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
 				E0A881BD2C170AF800538021 /* Components.swift in Sources */,
+				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

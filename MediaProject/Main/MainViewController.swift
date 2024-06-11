@@ -73,10 +73,18 @@ class MainViewController: UIViewController, SetupView {
     func setupUI() {
         view.backgroundColor = .systemBackground
         let leftItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
-        let rightItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        let rightItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
+        navigationItem.title = "현재 급상승 중인 영화"
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
         tableView.separatorStyle = .none
+    }
+    
+    @objc func searchBtnTapped(_ sender: UIButton) {
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // 장르 리스트 딕셔너리로 가져오기
@@ -114,5 +122,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as! MovieTableViewCell
         cell.configureCell(movieList[indexPath.row], genreDict)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.movie = movieList[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
