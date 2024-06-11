@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, SetupView {
     
     var page = 1
     var totalPage = 0
+    var movieList: [Movie] = []
     var posters: [String] = []
     
     override func viewDidLoad() {
@@ -76,16 +77,20 @@ class SearchViewController: UIViewController, SetupView {
     
     private func fetchMovieData(_ query: String) {
         let parameters: Parameters = ["query": query, "include_adult": false, "language": "ko-KR", "page": page]
-        AF.request(TMDB.searchUrl, parameters: parameters, headers: TMDB.header).responseDecodable(of: MoviePosterContainer.self) { response in
+        AF.request(TMDB.searchUrl, parameters: parameters, headers: TMDB.header).responseDecodable(of: MovieContainer.self) { response in
             switch response.result {
             case .success(let value):
                 // 포스터 이미지 경로만 -> compactMap으로 nil 아닌 데이터만 가져오기
                 let posterImagePaths = value.results.map { $0.poster_path }.compactMap { $0 }
+                // 검색 결과에서 포스터 이미지가 없는 영화는 가져오지 않으므로 movieList도 poster_path가 nil 이 아닌 데이터만 넣어주기
+                let movies = value.results.filter { $0.poster_path != nil }
                 if self.page == 1 { // 🔍 page가 1 상태라면 새로운 검색
+                    self.movieList = movies
                     self.posters = posterImagePaths
                     self.totalPage = value.total_pages
                 } else { // page가 1이 아니라면 이미 보던 검색창이니까 이전데이터에 데이터 추가해주기
                     self.posters.append(contentsOf: posterImagePaths)
+                    self.movieList.append(contentsOf: movies)
                 }
                 // 데이터 불러오고나서 collectionView 다시 리로딩
                 self.collectionView.reloadData()
@@ -127,6 +132,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.configureCell(posters[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.movie = movieList[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: SearchBarExtension
@@ -136,5 +147,6 @@ extension SearchViewController: UISearchBarDelegate {
         // 검색 버튼을 누른다 = 새로운 검색을 한다 = page를 1로 초기화한다
         page = 1
         fetchMovieData(keyword)
+        view.endEditing(true)
     }
 }

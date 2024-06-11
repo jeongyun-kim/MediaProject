@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, SetupView {
             TMDB.imagePath = imagePath
         }
         imageView.kf.setImage(with: TMDB.movieImageUrl)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -75,7 +76,7 @@ class DetailViewController: UIViewController, SetupView {
         }
         
         movieTitleLabel.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(24)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
         posterImageView.snp.makeConstraints {
@@ -123,7 +124,7 @@ class DetailViewController: UIViewController, SetupView {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
-        overviewContentLabel.numberOfLines = 0
+        overviewContentLabel.numberOfLines = 5
         overviewContentLabel.text = movie?.overview
     }
 }

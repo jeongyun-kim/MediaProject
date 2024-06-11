@@ -8,10 +8,11 @@
 import Foundation
 import Alamofire
 
-// MARK: 트렌드 영화
+// MARK: 영화
 struct MovieContainer: Decodable {
     let page: Int
     let results: [Movie]
+    let total_pages: Int
 }
 
 struct Movie: Decodable {
@@ -49,16 +50,4 @@ struct Genres: Decodable {
 struct Genre: Decodable {
     let id: Int
     let name: String
-}
-
-
-// MARK: 영화 포스터 
-struct MoviePosterContainer: Decodable {
-    let page: Int
-    let results: [MoviePoster]
-    let total_pages: Int
-}
-
-struct MoviePoster: Decodable {
-    let poster_path: String?
 }
