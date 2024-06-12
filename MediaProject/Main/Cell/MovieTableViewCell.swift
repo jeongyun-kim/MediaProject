@@ -38,7 +38,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
    
     let border = CustomBorder(color: .darkGray)
     
-    let moreLabel = CustomLabel(text: LabelText.overviewLabel.rawValue, size: 13)
+    let moreLabel = CustomLabel(text: LabelText.moreLabel.rawValue, size: 13)
     
     let moreImageView: UIImageView = {
         let imageView = UIImageView()

@@ -31,6 +31,7 @@
 		E0A881EF2C19D7BB00538021 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881EE2C19D7BB00538021 /* CustomLabel.swift */; };
 		E0A881F42C19DA4400538021 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F32C19DA4400538021 /* CustomImageView.swift */; };
 		E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F62C19DC6500538021 /* CastingViewController.swift */; };
+		E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E0A881EE2C19D7BB00538021 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		E0A881F32C19DA4400538021 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E0A881F62C19DC6500538021 /* CastingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingViewController.swift; sourceTree = "<group>"; };
+		E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		E0A8818C2C16D76000538021 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				E0B0B68B2C19E22A00A24154 /* Extension */,
 				E0A881F52C19DBCF00538021 /* Constant */,
 				E0A881A72C16DA0500538021 /* Protocol */,
 				E0A881F02C19D9C900538021 /* Customs */,
@@ -197,6 +200,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		E0B0B68B2C19E22A00A24154 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,6 +301,7 @@
 				E0A881EB2C19D40000538021 /* CustomBorder.swift in Sources */,
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
+				E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
 				E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */,
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,

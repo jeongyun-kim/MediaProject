@@ -13,6 +13,7 @@ import Toast
 class SearchViewController: UIViewController, SetupView {
     
     let searchBar = UISearchBar()
+    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
     var page = 1
@@ -101,9 +102,13 @@ class SearchViewController: UIViewController, SetupView {
                 }
                 // 데이터 불러오고나서 collectionView 다시 리로딩
                 self.collectionView.reloadData()
-                // 첫검색 시, 스크롤 맨위로
-                if self.page == 1 {
+                // 첫검색 시이고 검색결과가 하나라도 있을 때
+                // 스크롤 맨 위로 이동하고 검색결과가 없다는 뷰 지우기
+                if self.page == 1 && movies.count > 0 {
+                    self.collectionView.restore()
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                } else { // 검색결과가 0개라면 검색결과가 없다는 뷰 세팅 
+                    self.collectionView.setupEmptyView()
                 }
             case .failure(let error):
                 print(error)
@@ -111,6 +116,9 @@ class SearchViewController: UIViewController, SetupView {
         }
     }
 }
+
+//
+
 
 // MARK: Pagination
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
