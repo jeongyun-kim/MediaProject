@@ -17,3 +17,12 @@ enum ButtonImage: String {
     case mainRightBarButton = "magnifyingglass"
     case more = "ellipsis"
 }
+
+
+enum LabelText: String {
+    case gradeLabel = "평점"
+    case moreLabel = "자세히 보기"
+    case genreLabel = "#장르"
+    case releaseDateLabel = "개봉일"
+    case overviewLabel = "줄거리"
+}

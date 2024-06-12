@@ -45,9 +45,13 @@ class SearchViewController: UIViewController, SetupView {
         }
     }
     
+    func setupNavigation() {
+        navigationItem.title = "영화 검색"
+    }
+    
     func setupUI() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = "영화 검색"
+        
         searchBar.placeholder = "영화를 검색해보세요"
         searchBar.delegate = self
     }
@@ -64,12 +68,15 @@ class SearchViewController: UIViewController, SetupView {
     
     static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16) // 큰 틀(섹션) 레이아웃
+        let horizontalSpacing: CGFloat = 16
+        let spacing: CGFloat = 8
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: horizontalSpacing, bottom: spacing, right: horizontalSpacing) // 큰 틀(섹션) 레이아웃
         
-        layout.minimumInteritemSpacing = 8 // 좌우
-        layout.minimumLineSpacing = 8 // 상하
         
-        let width = (UIScreen.main.bounds.width - 48) / 3 // 각 셀의 너비
+        layout.minimumInteritemSpacing = spacing // 좌우
+        layout.minimumLineSpacing = spacing // 상하
+        
+        let width = (UIScreen.main.bounds.width - spacing*2 - horizontalSpacing*2) / 3 // 각 셀의 너비
         layout.itemSize = CGSize(width: width, height: width*1.5) // 3:2 비율로 셀 구성
         
         return layout

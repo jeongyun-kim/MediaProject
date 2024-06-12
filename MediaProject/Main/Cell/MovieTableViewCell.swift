@@ -11,9 +11,9 @@ import SnapKit
 
 class MovieTableViewCell: UITableViewCell, SetupView {
     
-    let releaseDate = CustomLabel(text: "개봉일", size: 13, color: .lightGray)
+    let releaseDate = CustomLabel(text: LabelText.releaseDateLabel.rawValue, size: 13, color: .lightGray)
 
-    let genreLabel = CustomLabel(text: "#장르", size: 16, weight: .bold)
+    let genreLabel = CustomLabel(text: LabelText.genreLabel.rawValue, size: 16, weight: .bold)
 
     let movieView: UIView = {
         let view = UIView()
@@ -38,7 +38,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
    
     let border = CustomBorder(color: .darkGray)
     
-    let moreLabel = CustomLabel(text: "자세히 보기", size: 13)
+    let moreLabel = CustomLabel(text: LabelText.overviewLabel.rawValue, size: 13)
     
     let moreImageView: UIImageView = {
         let imageView = UIImageView()
@@ -54,7 +54,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         return stackView
     }()
     
-    let gradeStrLabel = CustomLabel(text: "평점", size: 13, color: .white)
+    let gradeStrLabel = CustomLabel(text: LabelText.gradeLabel.rawValue, size: 13, color: .white)
 
     let gradeLabel = CustomLabel(size: 13)
  

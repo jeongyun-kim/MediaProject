@@ -31,6 +31,7 @@ class MainViewController: UIViewController, SetupView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         setupHierarchy()
         setupConstraints()
         fetchMovieGenres()
@@ -64,10 +65,11 @@ class MainViewController: UIViewController, SetupView {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        
+        tableView.separatorStyle = .none
     }
     
-    func setupUI() {
-        view.backgroundColor = .systemBackground
+    func setupNavigation() {
         let leftItem = UIBarButtonItem(image: UIImage(systemName: ButtonImage.mainLeftBarButton.rawValue), style: .plain, target: self, action: nil)
         let rightItem = UIBarButtonItem(image: UIImage(systemName: ButtonImage.mainRightBarButton.rawValue), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
@@ -75,7 +77,10 @@ class MainViewController: UIViewController, SetupView {
         navigationItem.title = "현재 급상승 중인 영화"
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
-        tableView.separatorStyle = .none
+    }
+    
+    func setupUI() {
+        view.backgroundColor = .systemBackground
     }
     
     @objc func searchBtnTapped(_ sender: UIButton) {

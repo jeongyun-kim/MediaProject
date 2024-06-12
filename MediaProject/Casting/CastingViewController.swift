@@ -28,7 +28,7 @@ class CastingViewController: UIViewController, SetupView {
     lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .systemRed
+        imageView.backgroundColor = .systemGray5
         guard let imagePath = movie!.poster_path else { return imageView }
         TMDB.imagePath = imagePath
         imageView.kf.setImage(with: TMDB.movieImageUrl)
@@ -37,7 +37,7 @@ class CastingViewController: UIViewController, SetupView {
     
     lazy var movieTitleLabel = CustomLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
     
-    lazy var overviewLabel = CustomLabel(text: "줄거리", size: 16)
+    lazy var overviewLabel = CustomLabel(text: LabelText.overviewLabel.rawValue, size: 16)
     
     lazy var overviewContentLabel = CustomLabel(size: 14, color: .lightGray)
     
@@ -52,7 +52,7 @@ class CastingViewController: UIViewController, SetupView {
     override func viewDidLoad() {
         super.viewDidLoad()
         TMDB.castingUrl = "\(movie!.id)"
-        
+        setupNavigation()
         setupHierarchy()
         setupConstraints()
         setupUI()
@@ -107,7 +107,9 @@ class CastingViewController: UIViewController, SetupView {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.register(CastingTableViewCell.self, forCellReuseIdentifier: CastingTableViewCell.identifier)
+        
         tableView.rowHeight = 120
     }
     
@@ -120,6 +122,10 @@ class CastingViewController: UIViewController, SetupView {
                 print(error)
             }
         }
+    }
+    
+    func setupNavigation() {
+        navigationItem.title = movie?.title
     }
     
     func setupUI() {
