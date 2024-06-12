@@ -21,14 +21,16 @@
 		E0A881B52C16DC7A00538021 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881B42C16DC7A00538021 /* Movie.swift */; };
 		E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */; };
 		E0A881BB2C16F7F600538021 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E0A881BA2C16F7F600538021 /* Kingfisher */; };
-		E0A881BD2C170AF800538021 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BC2C170AF700538021 /* Components.swift */; };
-		E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */; };
-		E0A881C22C1716ED00538021 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C12C1716ED00538021 /* DetailViewController.swift */; };
 		E0A881C42C1718CF00538021 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C32C1718CF00538021 /* Actor.swift */; };
 		E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881C92C1723E800538021 /* CastingTableViewCell.swift */; };
 		E0A881D52C18500900538021 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881D42C18500900538021 /* SearchViewController.swift */; };
 		E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */; };
 		E0A881DB2C18617200538021 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E0A881DA2C18617200538021 /* Toast */; };
+		E0A881EB2C19D40000538021 /* CustomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881EA2C19D40000538021 /* CustomBorder.swift */; };
+		E0A881ED2C19D61800538021 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881EC2C19D61800538021 /* Enums.swift */; };
+		E0A881EF2C19D7BB00538021 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881EE2C19D7BB00538021 /* CustomLabel.swift */; };
+		E0A881F42C19DA4400538021 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F32C19DA4400538021 /* CustomImageView.swift */; };
+		E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F62C19DC6500538021 /* CastingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,13 +47,15 @@
 		E0A881AA2C16DA4F00538021 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		E0A881B42C16DC7A00538021 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		E0A881BC2C170AF700538021 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
-		E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
-		E0A881C12C1716ED00538021 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E0A881C32C1718CF00538021 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		E0A881C92C1723E800538021 /* CastingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingTableViewCell.swift; sourceTree = "<group>"; };
 		E0A881D42C18500900538021 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0A881EA2C19D40000538021 /* CustomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBorder.swift; sourceTree = "<group>"; };
+		E0A881EC2C19D61800538021 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		E0A881EE2C19D7BB00538021 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		E0A881F32C19DA4400538021 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		E0A881F62C19DC6500538021 /* CastingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +93,13 @@
 		E0A8818C2C16D76000538021 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
-				E0A881BC2C170AF700538021 /* Components.swift */,
-				E0A881D82C185DE000538021 /* Extension */,
-				E0A881C02C1716DE00538021 /* Detail */,
-				E0A881B32C16DC6100538021 /* Model */,
+				E0A881F52C19DBCF00538021 /* Constant */,
 				E0A881A72C16DA0500538021 /* Protocol */,
+				E0A881F02C19D9C900538021 /* Customs */,
+				E0A881C02C1716DE00538021 /* Casting */,
+				E0A881B32C16DC6100538021 /* Model */,
 				E0A881AC2C16DA8500538021 /* Main */,
+				E0A881F12C19D9DF00538021 /* Search */,
 				E0A8818D2C16D76000538021 /* AppDelegate.swift */,
 				E0A8818F2C16D76000538021 /* SceneDelegate.swift */,
 				E0A881962C16D76100538021 /* Assets.xcassets */,
@@ -119,7 +124,6 @@
 			children = (
 				E0A881B62C16E89100538021 /* Cell */,
 				E0A881A52C16D9FF00538021 /* MainViewController.swift */,
-				E0A881D42C18500900538021 /* SearchViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -137,18 +141,17 @@
 			isa = PBXGroup;
 			children = (
 				E0A881B72C16E89C00538021 /* MovieTableViewCell.swift */,
-				E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		E0A881C02C1716DE00538021 /* Detail */ = {
+		E0A881C02C1716DE00538021 /* Casting */ = {
 			isa = PBXGroup;
 			children = (
 				E0A881C62C1722D400538021 /* Cell */,
-				E0A881C12C1716ED00538021 /* DetailViewController.swift */,
+				E0A881F62C19DC6500538021 /* CastingViewController.swift */,
 			);
-			path = Detail;
+			path = Casting;
 			sourceTree = "<group>";
 		};
 		E0A881C62C1722D400538021 /* Cell */ = {
@@ -159,12 +162,39 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		E0A881D82C185DE000538021 /* Extension */ = {
+		E0A881F02C19D9C900538021 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
-				E0A881BE2C170B6A00538021 /* UILabel + Extension.swift */,
+				E0A881F32C19DA4400538021 /* CustomImageView.swift */,
+				E0A881EA2C19D40000538021 /* CustomBorder.swift */,
+				E0A881EE2C19D7BB00538021 /* CustomLabel.swift */,
 			);
-			path = Extension;
+			path = Customs;
+			sourceTree = "<group>";
+		};
+		E0A881F12C19D9DF00538021 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E0A881F22C19D9EA00538021 /* Cell */,
+				E0A881D42C18500900538021 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E0A881F22C19D9EA00538021 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E0A881D62C1854ED00538021 /* SearchCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E0A881F52C19DBCF00538021 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				E0A881EC2C19D61800538021 /* Enums.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,18 +280,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0A881C22C1716ED00538021 /* DetailViewController.swift in Sources */,
+				E0A881F42C19DA4400538021 /* CustomImageView.swift in Sources */,
+				E0A881EF2C19D7BB00538021 /* CustomLabel.swift in Sources */,
 				E0A881B52C16DC7A00538021 /* Movie.swift in Sources */,
 				E0A881A92C16DA1800538021 /* ReusableIdentifier.swift in Sources */,
 				E0A881C42C1718CF00538021 /* Actor.swift in Sources */,
 				E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */,
+				E0A881ED2C19D61800538021 /* Enums.swift in Sources */,
+				E0A881EB2C19D40000538021 /* CustomBorder.swift in Sources */,
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
+				E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */,
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
-				E0A881BF2C170B6A00538021 /* UILabel + Extension.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
-				E0A881BD2C170AF800538021 /* Components.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
 				E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */,

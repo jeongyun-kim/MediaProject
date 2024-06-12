@@ -25,11 +25,7 @@ class MainViewController: UIViewController, SetupView {
         }
     }
     
-    let border: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
+    let border: UIView = CustomBorder(color: .systemGray5)
     
     let tableView = UITableView()
 
@@ -72,8 +68,8 @@ class MainViewController: UIViewController, SetupView {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
-        let leftItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
-        let rightItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchBtnTapped))
+        let leftItem = UIBarButtonItem(image: UIImage(systemName: ButtonImage.mainLeftBarButton.rawValue), style: .plain, target: self, action: nil)
+        let rightItem = UIBarButtonItem(image: UIImage(systemName: ButtonImage.mainRightBarButton.rawValue), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationItem.title = "현재 급상승 중인 영화"
@@ -90,7 +86,7 @@ class MainViewController: UIViewController, SetupView {
     // 장르 리스트 딕셔너리로 가져오기
     // - [아이디(Int) : 장르명(String)]
     func fetchMovieGenres()  {
-        AF.request(TMDB.genreUrl, headers: TMDB.header).responseDecodable(of: Genres.self) { response in
+        AF.request(TMDB.genreUrl, headers: Header.header).responseDecodable(of: Genres.self) { response in
             switch response.result {
             case .success(let value):
                 self.genreDict = value.genreDict
@@ -102,7 +98,7 @@ class MainViewController: UIViewController, SetupView {
 
     // 영화 리스트 가져오기
     func fetchMovieDatas() {
-        AF.request(TMDB.movieUrl, headers: TMDB.header).responseDecodable(of: MovieContainer.self) { response in
+        AF.request(TMDB.movieUrl, headers: Header.header).responseDecodable(of: MovieContainer.self) { response in
             switch response.result {
             case .success(let value):
                 self.movieList = value.results
@@ -125,7 +121,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
+        let vc = CastingViewController()
         vc.movie = movieList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

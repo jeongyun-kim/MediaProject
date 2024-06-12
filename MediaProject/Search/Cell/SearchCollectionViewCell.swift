@@ -10,14 +10,7 @@ import Kingfisher
 
 class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 6
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .lightGray
-        return imageView
-    }()
+    let imageView: UIImageView = CustomImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

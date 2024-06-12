@@ -11,42 +11,38 @@ import SnapKit
 
 class MovieTableViewCell: UITableViewCell, SetupView {
     
-    let releaseDate = Custom.configureLabel(text: "개봉일", size: 13, color: .lightGray)
+    let releaseDate = CustomLabel(text: "개봉일", size: 13, color: .lightGray)
 
-    let genreLabel = Custom.configureLabel(text: "#장르", size: 16, weight: .bold)
+    let genreLabel = CustomLabel(text: "#장르", size: 16, weight: .bold)
 
     let movieView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = Custom.cornerRadius
+        view.layer.cornerRadius = CornerRadius.cornerRadius
         view.layer.shadowOpacity = 1
         view.backgroundColor = .white
         view.layer.shadowOffset = .zero
         view.layer.shadowColor = UIColor.lightGray.cgColor
-        view.layer.shadowRadius = Custom.cornerRadius
+        view.layer.shadowRadius = CornerRadius.cornerRadius
         return view
     }()
     
     let movieImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .systemGray5
-        imageView.layer.cornerRadius = Custom.cornerRadius
-        imageView.layer.masksToBounds = true
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // 좌우상단만 깎기 
+        let imageView = CustomImageView(frame: .zero)
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // 좌우상단만 깎기
         return imageView
     }()
     
-    let titleLabel = Custom.configureLabel(size: 18)
+    let titleLabel = CustomLabel(size: 16, color: .lightGray)
     
-    let descLabel = Custom.configureLabel(size: 16, color: .lightGray)
-
-    let border = Custom.makeBorder(.darkGray)
+    let descLabel = CustomLabel(size: 16, color: .lightGray)
+   
+    let border = CustomBorder(color: .darkGray)
     
-    let moreLabel = Custom.configureLabel(text: "자세히 보기", size: 13)
+    let moreLabel = CustomLabel(text: "자세히 보기", size: 13)
     
     let moreImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "ellipsis")
+        imageView.image = UIImage(systemName: ButtonImage.more.rawValue)
         imageView.tintColor = .black
         return imageView
     }()
@@ -58,9 +54,9 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         return stackView
     }()
     
-    let gradeStrLabel = Custom.configureLabel(text: "평점", size: 13, color: .white)
+    let gradeStrLabel = CustomLabel(text: "평점", size: 13, color: .white)
 
-    let gradeLabel = Custom.configureLabel(size: 13)
+    let gradeLabel = CustomLabel(size: 13)
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -77,7 +77,7 @@ class SearchViewController: UIViewController, SetupView {
     
     private func fetchMovieData(_ query: String) {
         let parameters: Parameters = ["query": query, "include_adult": false, "language": "ko-KR", "page": page]
-        AF.request(TMDB.searchUrl, parameters: parameters, headers: TMDB.header).responseDecodable(of: MovieContainer.self) { response in
+        AF.request(TMDB.searchUrl, parameters: parameters, headers: Header.header).responseDecodable(of: MovieContainer.self) { response in
             switch response.result {
             case .success(let value):
                 // 포스터 이미지 경로만 -> compactMap으로 nil 아닌 데이터만 가져오기
@@ -134,7 +134,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailViewController()
+        let vc = CastingViewController()
         vc.movie = movieList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

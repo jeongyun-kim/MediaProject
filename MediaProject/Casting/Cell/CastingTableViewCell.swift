@@ -11,20 +11,13 @@ import Kingfisher
 
 class CastingTableViewCell: UITableViewCell, SetupView {
     
-    let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 8
-        imageView.backgroundColor = .systemGray
-        return imageView
-    }()
+    let profileImageView: UIImageView = CustomImageView(frame: .zero)
 
-    let actorNameLabel = Custom.configureLabel(text: "이름", size: 15, weight: .bold)
+    let actorNameLabel = CustomLabel(size: 15, weight: .bold)
     
-    let characterLabel = Custom.configureLabel(size: 14, color: .lightGray)
+    let characterLabel = CustomLabel(size: 14, color: .lightGray)
     
-    let popularityLabel = Custom.configureLabel(size: 13, color: .systemYellow)
+    let popularityLabel = CustomLabel(size: 13, color: .systemYellow)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

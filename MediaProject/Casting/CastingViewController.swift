@@ -10,7 +10,7 @@ import Alamofire
 import SnapKit
 import Kingfisher
 
-class DetailViewController: UIViewController, SetupView {
+class CastingViewController: UIViewController, SetupView {
     
     lazy var movie: Movie? = nil
     
@@ -21,7 +21,7 @@ class DetailViewController: UIViewController, SetupView {
             TMDB.imagePath = imagePath
         }
         imageView.kf.setImage(with: TMDB.movieImageUrl)
-        imageView.layer.masksToBounds = true
+   
         return imageView
     }()
     
@@ -35,11 +35,11 @@ class DetailViewController: UIViewController, SetupView {
         return imageView
     }()
     
-    lazy var movieTitleLabel = Custom.configureLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
+    lazy var movieTitleLabel = CustomLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
     
-    lazy var overviewLabel = Custom.configureLabel(text: "줄거리", size: 16)
+    lazy var overviewLabel = CustomLabel(text: "줄거리", size: 16)
     
-    lazy var overviewContentLabel = Custom.configureLabel(size: 14, color: .lightGray)
+    lazy var overviewContentLabel = CustomLabel(size: 14, color: .lightGray)
     
     lazy var tableView = UITableView()
     
@@ -112,7 +112,7 @@ class DetailViewController: UIViewController, SetupView {
     }
     
     private func fetchCasting() {
-        AF.request(TMDB.castingUrl, headers: TMDB.header).responseDecodable(of: Casting.self) { response in
+        AF.request(TMDB.castingUrl, headers: Header.header).responseDecodable(of: Casting.self) { response in
             switch response.result {
             case .success(let value):
                 self.castingList = value.cast
@@ -129,7 +129,7 @@ class DetailViewController: UIViewController, SetupView {
     }
 }
 
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension CastingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return castingList.count
     }
