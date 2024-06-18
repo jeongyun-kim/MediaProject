@@ -60,6 +60,7 @@ class SearchViewController: UIViewController, SetupView {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.backButtonTitle = ""
         
         searchBar.placeholder = "영화를 검색해보세요"
         searchBar.delegate = self

@@ -32,7 +32,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         return imageView
     }()
     
-    let titleLabel = CustomLabel(size: 16, color: .lightGray)
+    let titleLabel = CustomLabel(size: 16)
     
     let descLabel = CustomLabel(size: 16, color: .lightGray)
    
