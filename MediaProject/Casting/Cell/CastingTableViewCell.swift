@@ -37,6 +37,7 @@ class CastingTableViewCell: UITableViewCell, SetupView {
             $0.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             $0.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(8)
             $0.width.equalTo(80)
+            $0.height.equalTo(100)
         }
         
         actorNameLabel.snp.makeConstraints {

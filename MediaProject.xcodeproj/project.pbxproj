@@ -32,6 +32,7 @@
 		E0A881F42C19DA4400538021 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F32C19DA4400538021 /* CustomImageView.swift */; };
 		E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F62C19DC6500538021 /* CastingViewController.swift */; };
 		E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */; };
+		E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E0A881F32C19DA4400538021 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E0A881F62C19DC6500538021 /* CastingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingViewController.swift; sourceTree = "<group>"; };
 		E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + Extension.swift"; sourceTree = "<group>"; };
+		E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A881C92C1723E800538021 /* CastingTableViewCell.swift */,
+				E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
 				E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */,
+				E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */,
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,

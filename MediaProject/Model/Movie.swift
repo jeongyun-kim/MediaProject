@@ -33,6 +33,10 @@ struct Movie: Decodable {
     let vote_count: Int
 }
 
+struct Overview {
+    let overview: String
+    var isOpen: Bool = false
+}
 
 // MARK: 장르
 struct Genres: Decodable {

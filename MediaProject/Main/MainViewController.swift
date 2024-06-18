@@ -127,7 +127,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CastingViewController()
-        vc.movie = movieList[indexPath.row]
+        let data = movieList[indexPath.row]
+        vc.movie = data
+        vc.overview = Overview(overview: data.overview)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

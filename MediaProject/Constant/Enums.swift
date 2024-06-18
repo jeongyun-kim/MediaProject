@@ -26,3 +26,8 @@ enum LabelText: String {
     case releaseDateLabel = "개봉일"
     case overviewLabel = "줄거리"
 }
+
+enum DetailSectionTitles: String, CaseIterable {
+    case overview = "줄거리"
+    case casting = "캐스팅"
+}

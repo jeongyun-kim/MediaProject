@@ -14,6 +14,8 @@ class CastingViewController: UIViewController, SetupView {
     
     lazy var movie: Movie? = nil
     
+    lazy var overview: Overview = Overview(overview: "")
+    
     lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -36,11 +38,7 @@ class CastingViewController: UIViewController, SetupView {
     }()
     
     lazy var movieTitleLabel = CustomLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
-    
-    lazy var overviewLabel = CustomLabel(text: LabelText.overviewLabel.rawValue, size: 16)
-    
-    lazy var overviewContentLabel = CustomLabel(size: 14, color: .lightGray)
-    
+
     lazy var tableView = UITableView()
     
     lazy var castingList: [Actor] = [] {
@@ -48,7 +46,7 @@ class CastingViewController: UIViewController, SetupView {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         TMDB.castingUrl = "\(movie!.id)"
@@ -58,15 +56,14 @@ class CastingViewController: UIViewController, SetupView {
         setupUI()
         fetchCasting()
         setupTableView()
+        overview = movie.map { Overview(overview: $0.overview )}!
     }
     
     func setupHierarchy() {
         view.addSubview(mainImageView)
         view.addSubview(movieTitleLabel)
         view.addSubview(posterImageView)
-        view.addSubview(overviewContentLabel)
         view.addSubview(tableView)
-        view.addSubview(overviewLabel)
     }
     
     func setupConstraints() {
@@ -87,19 +84,8 @@ class CastingViewController: UIViewController, SetupView {
             $0.bottom.equalTo(mainImageView.snp.bottom).inset(8)
         }
         
-        overviewLabel.snp.makeConstraints {
-            $0.leading.equalTo(posterImageView)
-            $0.top.equalTo(mainImageView.snp.bottom).offset(16)
-        }
-        
-        overviewContentLabel.snp.makeConstraints {
-            $0.leading.equalTo(overviewLabel.snp.leading)
-            $0.top.equalTo(overviewLabel.snp.bottom).offset(4)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-        }
-        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(overviewContentLabel.snp.bottom).offset(12)
+            $0.top.equalTo(mainImageView.snp.bottom).offset(12)
             $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -108,9 +94,11 @@ class CastingViewController: UIViewController, SetupView {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(OverviewTableViewCell.self, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         tableView.register(CastingTableViewCell.self, forCellReuseIdentifier: CastingTableViewCell.identifier)
         
-        tableView.rowHeight = 120
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     private func fetchCasting() {
@@ -130,19 +118,42 @@ class CastingViewController: UIViewController, SetupView {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
-        overviewContentLabel.numberOfLines = 5
-        overviewContentLabel.text = movie?.overview
     }
 }
 
 extension CastingViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DetailSectionTitles.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return DetailSectionTitles.allCases[section].rawValue
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return castingList.count
+        if section == 0 {
+            return 1
+        } else {
+            return castingList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CastingTableViewCell.identifier, for: indexPath) as! CastingTableViewCell
-        cell.configureCell(castingList[indexPath.row])
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier, for: indexPath) as! OverviewTableViewCell
+            cell.configureCell(overview)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CastingTableViewCell.identifier, for: indexPath) as! CastingTableViewCell
+            cell.configureCell(castingList[indexPath.row])
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            overview.isOpen.toggle()
+            tableView.reloadData()
+        }
     }
 }
