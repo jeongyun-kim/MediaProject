@@ -18,7 +18,15 @@ class SearchViewController: UIViewController, SetupView {
     
     var page = 1
     var totalPage = 0
-    var movieList: [Movie] = []
+    var movieList: [Movie] = [] {
+        didSet {
+            if movieList.count > 0 {
+                collectionView.restore()
+            } else {
+                collectionView.setupEmptyView()
+            }
+        }
+    }
     var posters: [String] = []
     
     override func viewDidLoad() {
@@ -105,10 +113,7 @@ class SearchViewController: UIViewController, SetupView {
                 // 첫검색 시이고 검색결과가 하나라도 있을 때
                 // 스크롤 맨 위로 이동하고 검색결과가 없다는 뷰 지우기
                 if self.page == 1 && movies.count > 0 {
-                    self.collectionView.restore()
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                } else { // 검색결과가 0개라면 검색결과가 없다는 뷰 세팅 
-                    self.collectionView.setupEmptyView()
                 }
             case .failure(let error):
                 print(error)
