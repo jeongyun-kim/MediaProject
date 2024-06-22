@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import SnapKit
 
 class MainViewController: UIViewController, SetupView {
@@ -91,25 +90,15 @@ class MainViewController: UIViewController, SetupView {
     // 장르 리스트 딕셔너리로 가져오기
     // - [아이디(Int) : 장르명(String)]
     func fetchMovieGenres()  {
-        AF.request(TMDB.genreUrl, headers: Header.header).responseDecodable(of: Genres.self) { response in
-            switch response.result {
-            case .success(let value):
-                self.genreDict = value.genreDict
-            case .failure(let error):
-                print(error)
-            }
+        NetworkService.shared.fetchGenreData { result in
+            self.genreDict = result.genreDict
         }
     }
 
     // 영화 리스트 가져오기
     func fetchMovieDatas() {
-        AF.request(TMDB.movieUrl, headers: Header.header).responseDecodable(of: MovieContainer.self) { response in
-            switch response.result {
-            case .success(let value):
-                self.movieList = value.results
-            case .failure(let error):
-                print(error)
-            }
+        NetworkService.shared.fetchMovieData { result in
+            self.movieList = result.results
         }
     }
 }

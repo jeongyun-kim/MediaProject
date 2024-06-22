@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import SnapKit
 import Kingfisher
 
@@ -102,13 +101,8 @@ class CastingViewController: UIViewController, SetupView {
     }
     
     private func fetchCasting() {
-        AF.request(TMDB.castingUrl, headers: Header.header).responseDecodable(of: Casting.self) { response in
-            switch response.result {
-            case .success(let value):
-                self.castingList = value.cast
-            case .failure(let error):
-                print(error)
-            }
+        NetworkService.shared.fetchCastingData { result in
+            self.castingList = result.cast
         }
     }
     

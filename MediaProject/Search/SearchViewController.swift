@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import SnapKit
 import Toast
 
@@ -93,31 +92,25 @@ class SearchViewController: UIViewController, SetupView {
     }
     
     private func fetchMovieData(_ query: String) {
-        let parameters: Parameters = ["query": query, "include_adult": false, "language": "ko-KR", "page": page]
-        AF.request(TMDB.searchUrl, parameters: parameters, headers: Header.header).responseDecodable(of: MovieContainer.self) { response in
-            switch response.result {
-            case .success(let value):
-                // 포스터 이미지 경로만 -> compactMap으로 nil 아닌 데이터만 가져오기
-                let posterImagePaths = value.results.map { $0.poster_path }.compactMap { $0 }
-                // 검색 결과에서 포스터 이미지가 없는 영화는 가져오지 않으므로 movieList도 poster_path가 nil 이 아닌 데이터만 넣어주기
-                let movies = value.results.filter { $0.poster_path != nil }
-                if self.page == 1 { // 🔍 page가 1 상태라면 새로운 검색
-                    self.movieList = movies
-                    self.posters = posterImagePaths
-                    self.totalPage = value.total_pages
-                } else { // page가 1이 아니라면 이미 보던 검색창이니까 이전데이터에 데이터 추가해주기
-                    self.posters.append(contentsOf: posterImagePaths)
-                    self.movieList.append(contentsOf: movies)
-                }
-                // 데이터 불러오고나서 collectionView 다시 리로딩
-                self.collectionView.reloadData()
-                // 첫검색 시이고 검색결과가 하나라도 있을 때
-                // 스크롤 맨 위로 이동하고 검색결과가 없다는 뷰 지우기
-                if self.page == 1 && movies.count > 0 {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                }
-            case .failure(let error):
-                print(error)
+        NetworkService.shared.fetchSearchData(query: query, page: page) { result in
+            // 포스터 이미지 경로만 -> compactMap으로 nil 아닌 데이터만 가져오기
+            let posterImagePaths = result.results.map { $0.poster_path }.compactMap { $0 }
+            // 검색 결과에서 포스터 이미지가 없는 영화는 가져오지 않으므로 movieList도 poster_path가 nil 이 아닌 데이터만 넣어주기
+            let movies = result.results.filter { $0.poster_path != nil }
+            if self.page == 1 { // 🔍 page가 1 상태라면 새로운 검색
+                self.movieList = movies
+                self.posters = posterImagePaths
+                self.totalPage = result.total_pages
+            } else { // page가 1이 아니라면 이미 보던 검색창이니까 이전데이터에 데이터 추가해주기
+                self.posters.append(contentsOf: posterImagePaths)
+                self.movieList.append(contentsOf: movies)
+            }
+            // 데이터 불러오고나서 collectionView 다시 리로딩
+            self.collectionView.reloadData()
+            // 첫검색 시이고 검색결과가 하나라도 있을 때
+            // 스크롤 맨 위로 이동하고 검색결과가 없다는 뷰 지우기
+            if self.page == 1 && movies.count > 0 {
+                self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
         }
     }

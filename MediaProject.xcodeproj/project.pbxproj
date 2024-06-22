@@ -33,6 +33,8 @@
 		E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A881F62C19DC6500538021 /* CastingViewController.swift */; };
 		E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */; };
 		E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */; };
+		E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B42C268E79008F795F /* NetworkService.swift */; };
+		E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		E0A881F62C19DC6500538021 /* CastingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingViewController.swift; sourceTree = "<group>"; };
 		E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + Extension.swift"; sourceTree = "<group>"; };
 		E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		E0BAE9B42C268E79008F795F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				E0A881982C16D76100538021 /* LaunchScreen.storyboard */,
 				E0A8819B2C16D76100538021 /* Info.plist */,
 				E0A881A32C16D95A00538021 /* APIKey.swift */,
+				E0BAE9B42C268E79008F795F /* NetworkService.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			children = (
 				E0A881A82C16DA1800538021 /* ReusableIdentifier.swift */,
 				E0A881AA2C16DA4F00538021 /* SetupView.swift */,
+				E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -304,12 +310,14 @@
 				E0A881EB2C19D40000538021 /* CustomBorder.swift in Sources */,
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
+				E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */,
 				E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
 				E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */,
 				E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */,
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
+				E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
 				E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */,
