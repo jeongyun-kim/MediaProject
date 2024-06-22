@@ -35,6 +35,7 @@
 		E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */; };
 		E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B42C268E79008F795F /* NetworkService.swift */; };
 		E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */; };
+		E0BAE9BB2C2698F1008F795F /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		E0BAE9B42C268E79008F795F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				E0A8819B2C16D76100538021 /* Info.plist */,
 				E0A881A32C16D95A00538021 /* APIKey.swift */,
 				E0BAE9B42C268E79008F795F /* NetworkService.swift */,
+				E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
+				E0BAE9BB2C2698F1008F795F /* LocalNotification.swift in Sources */,
 				E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
