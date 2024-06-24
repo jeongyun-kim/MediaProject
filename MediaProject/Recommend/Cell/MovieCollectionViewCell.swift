@@ -7,8 +7,6 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
-
 
 class MovieCollectionViewCell: UICollectionViewCell {
     let posterImageView = CustomImageView(cornerRadius: CornerRadius.imageViewCornerRadius)

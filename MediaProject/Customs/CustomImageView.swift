@@ -24,4 +24,18 @@ class CustomImageView: UIImageView {
         layer.masksToBounds = true
         backgroundColor = .systemGray5
     }
+    
+    // Data로 이미지 넣어보기 
+    func setImage(url: URL) {
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
