@@ -42,6 +42,7 @@ class RecommendViewController: UIViewController {
         super.viewDidLoad()
         setupHierarchy()
         setupConstraints()
+        setupNavigation()
         setupUI()
         TMDB.similarMovieURL = "\(movie.id)"
         fetchSimilarMovies()
@@ -108,12 +109,15 @@ extension RecommendViewController: SetupView {
     }
     
     func setupUI() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = movie.title
         view.backgroundColor = .systemBackground
         [similarCollectionView, recommendCollectionView].forEach {
             setupCollectionView($0)
         }
+    }
+    
+    func setupNavigation() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = movie.title
         let rightBarItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = rightBarItem
     }
