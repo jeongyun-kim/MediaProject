@@ -10,7 +10,7 @@ import Kingfisher
 
 class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     
-    let imageView: UIImageView = CustomImageView(frame: .zero)
+    let imageView: UIImageView = CustomImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

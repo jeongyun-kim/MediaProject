@@ -27,7 +27,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
     }()
     
     let movieImageView: UIImageView = {
-        let imageView = CustomImageView(frame: .zero)
+        let imageView = CustomImageView()
         imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // 좌우상단만 깎기
         return imageView
     }()
@@ -85,7 +85,6 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         releaseDate.snp.makeConstraints {
             $0.top.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             $0.leading.equalTo(movieView)
-            $0.height.equalTo(15)
         }
         
         genreLabel.snp.makeConstraints {

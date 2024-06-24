@@ -10,13 +10,9 @@ import SnapKit
 import Kingfisher
 
 class CastingTableViewCell: UITableViewCell, SetupView {
-    
-    let profileImageView: UIImageView = CustomImageView(frame: .zero)
-
+    let profileImageView: UIImageView = CustomImageView()
     let actorNameLabel = CustomLabel(size: 15, weight: .bold)
-    
     let characterLabel = CustomLabel(size: 14, color: .lightGray)
-    
     let popularityLabel = CustomLabel(size: 13, color: .systemYellow)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

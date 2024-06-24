@@ -9,20 +9,19 @@ import UIKit
 
 class CustomImageView: UIImageView {
     
-    override init(frame: CGRect) {
+    init(cornerRadius: CGFloat = CornerRadius.imageViewCornerRadius) {
         super.init(frame: .zero)
-        configureImageView()
+        configureImageView(cornerRadius)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureImageView() {
+    private func configureImageView(_ cornerRadius: CGFloat) {
         contentMode = .scaleAspectFill
-        layer.cornerRadius = CornerRadius.imageViewCornerRadius
+        layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
         backgroundColor = .systemGray5
     }
-    
 }

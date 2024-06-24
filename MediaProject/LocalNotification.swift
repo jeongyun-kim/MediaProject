@@ -28,4 +28,6 @@ class LocalNotification {
             UNUserNotificationCenter.current().add(request)
         }
     }
+    
+    fileprivate let a = "a"
 }

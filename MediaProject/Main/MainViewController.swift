@@ -39,6 +39,11 @@ class MainViewController: UIViewController, SetupView {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     func setupHierarchy() {
         view.addSubview(border)
         view.addSubview(tableView)
@@ -75,7 +80,6 @@ class MainViewController: UIViewController, SetupView {
         navigationItem.rightBarButtonItem = rightItem
         navigationItem.title = "현재 급상승 중인 영화"
         navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = .black
     }
     
     func setupUI() {
@@ -115,10 +119,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CastingViewController()
+        let vc = RecommendViewController()
         let data = movieList[indexPath.row]
         vc.movie = data
-        vc.overview = Overview(overview: data.overview)
+        //vc.overview = Overview(overview: data.overview)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
