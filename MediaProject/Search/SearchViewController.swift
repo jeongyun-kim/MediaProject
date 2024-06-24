@@ -12,7 +12,6 @@ import Toast
 class SearchViewController: UIViewController, SetupView {
     
     let searchBar = UISearchBar()
-    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
     var page = 1
@@ -148,7 +147,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = CastingViewController()
+        let vc = RecommendViewController()
         vc.movie = movieList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

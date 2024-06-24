@@ -31,6 +31,17 @@ struct Movie: Decodable {
     let video: Bool
     let vote_average: Double
     let vote_count: Int
+    
+    var posterURL: URL? {
+        guard let imagePath = poster_path else { return nil }
+        guard let url = URL(string: "\(TMDB.movieImageUrl2)\(imagePath)") else { return nil }
+        return url
+    }
+    var mainImageURL: URL? {
+        guard let imagePath = backdrop_path else { return nil }
+        guard let url = URL(string: "\(TMDB.movieImageUrl2)\(imagePath)") else { return nil }
+        return url
+    }
 }
 
 struct Overview {
