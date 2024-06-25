@@ -16,16 +16,13 @@ class MainViewController: UIViewController, SetupView {
             tableView.reloadData()
         }
     }
-    
     // 장르
     var genreDict: [Int: String] = [:] {
         didSet {
             tableView.reloadData()
         }
     }
-    
     let border: UIView = CustomBorder(color: .systemGray5)
-    
     let tableView = UITableView()
 
     override func viewDidLoad() {
@@ -119,7 +116,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = RecommendViewController()
+        let vc = PosterViewController()
         let data = movieList[indexPath.row]
         vc.movie = data
         //vc.overview = Overview(overview: data.overview)

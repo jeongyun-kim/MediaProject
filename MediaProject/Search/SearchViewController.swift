@@ -80,7 +80,6 @@ class SearchViewController: UIViewController, SetupView {
         let spacing: CGFloat = 8
         layout.sectionInset = UIEdgeInsets(top: spacing, left: horizontalSpacing, bottom: spacing, right: horizontalSpacing) // 큰 틀(섹션) 레이아웃
         
-        
         layout.minimumInteritemSpacing = spacing // 좌우
         layout.minimumLineSpacing = spacing // 상하
         
@@ -147,7 +146,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = RecommendViewController()
+        let vc = PosterViewController()
         vc.movie = movieList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -15,6 +15,7 @@ class BaseTableViewController: UIViewController, SetupView {
         setupConstraints()
         setupUI()
         setupNavigation()
+        setupTableView()
     }
     
     func setupHierarchy() {
