@@ -75,7 +75,6 @@ class PosterViewController: BaseTableViewController {
         }
         
         group.notify(queue: .main) {
-            print(self.posterList)
             self.tableView.reloadData()
         }
     }

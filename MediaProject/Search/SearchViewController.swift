@@ -32,7 +32,13 @@ class SearchViewController: UIViewController, SetupView {
         setupHierarchy()
         setupConstraints()
         setupUI()
+        setupNavigation()
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func setupHierarchy() {
