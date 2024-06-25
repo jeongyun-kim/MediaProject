@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BaseTableViewCell: UITableViewCell {
+class BaseTableViewCell: UITableViewCell, SetupCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -18,12 +18,8 @@ class BaseTableViewCell: UITableViewCell {
         configureCell()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setupHierarchy() {
-        
+
     }
     
     func setupConstraints() {
@@ -36,5 +32,9 @@ class BaseTableViewCell: UITableViewCell {
     
     func configureCell() {
         
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

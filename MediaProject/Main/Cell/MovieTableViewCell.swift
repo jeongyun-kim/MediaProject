@@ -9,12 +9,10 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class MovieTableViewCell: UITableViewCell, SetupView {
+class MovieTableViewCell: UITableViewCell, SetupCell {
     
     let releaseDate = CustomLabel(text: LabelText.releaseDateLabel.rawValue, size: 13, color: .lightGray)
-
     let genreLabel = CustomLabel(text: LabelText.genreLabel.rawValue, size: 16, weight: .bold)
-
     let movieView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = CornerRadius.cornerRadius
@@ -25,37 +23,28 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         view.layer.shadowRadius = CornerRadius.cornerRadius
         return view
     }()
-    
     let movieImageView: UIImageView = {
         let imageView = CustomImageView()
         imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // 좌우상단만 깎기
         return imageView
     }()
-    
     let titleLabel = CustomLabel(size: 16)
-    
     let descLabel = CustomLabel(size: 16, color: .lightGray)
-   
     let border = CustomBorder(color: .darkGray)
-    
     let moreLabel = CustomLabel(text: LabelText.moreLabel.rawValue, size: 13)
-    
     let moreImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: ButtonImage.more.rawValue)
         imageView.tintColor = .black
         return imageView
     }()
-    
     let gradeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
     }()
-    
     let gradeStrLabel = CustomLabel(text: LabelText.gradeLabel.rawValue, size: 13, color: .white)
-
     let gradeLabel = CustomLabel(size: 13)
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -138,7 +127,7 @@ class MovieTableViewCell: UITableViewCell, SetupView {
         }
     }
     
-    private func configureLayout() {
+    func configureLayout() {
         self.selectionStyle = .none
         [gradeStrLabel, gradeLabel].forEach { label in
             label.textAlignment = .center
