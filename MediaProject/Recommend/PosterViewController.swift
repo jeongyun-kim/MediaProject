@@ -12,7 +12,7 @@ import Kingfisher
 class PosterViewController: BaseTableViewController {
     
     var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)    
-    private var posterList: [[String]] = []
+    private var posterList: [[String]] = [[], [], []]
 
     private let tableView = UITableView()
     
@@ -53,7 +53,7 @@ class PosterViewController: BaseTableViewController {
         group.enter()
         DispatchQueue.global().async(group: group) {
             NetworkService.shared.fetchSimilarMovieData { result in
-                self.posterList.append(result.results.map { $0.posterURL })
+                self.posterList[0] = result.results.map { $0.posterURL }
                 group.leave()
             }
         }
@@ -61,7 +61,7 @@ class PosterViewController: BaseTableViewController {
         group.enter()
         DispatchQueue.global().async(group: group) {
             NetworkService.shared.fetchRecommendMovieData { result in
-                self.posterList.append(result.results.map { $0.posterURL })
+                self.posterList[1] = result.results.map { $0.posterURL }
                 group.leave()
             }
         }
@@ -69,7 +69,7 @@ class PosterViewController: BaseTableViewController {
         group.enter()
         DispatchQueue.global().async(group: group) {
             NetworkService.shared.fetchPosterData { result in
-                self.posterList.append(result.backdrops.map { $0.fileURL })
+                self.posterList[2] = result.backdrops.map { $0.fileURL }
                 group.leave()
             }
         }
