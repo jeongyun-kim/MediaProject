@@ -46,18 +46,21 @@ extension NetworkService: NetworkProtocol {
         fetchResult(url: url, params: parameters, completionHandler: completionHandler)
     }
     
-    func fetchSimilarMovieData(completionHandler: @escaping (MovieContainer) -> Void) {
+    func fetchSimilarMovieData(completionHandler: @escaping (PosterContainer) -> Void) {
         guard let url = URL(string: TMDB.similarMovieURL) else { return }
         let parameters: Parameters = ["language": "ko-KR"]
         fetchResult(url: url, params: parameters, completionHandler: completionHandler)
     }
     
-    func fetchRecommendMovieData(completionHandler: @escaping (MovieContainer) -> Void) {
+    func fetchRecommendMovieData(completionHandler: @escaping (PosterContainer) -> Void) {
         guard let url = URL(string: TMDB.recommendMovieURL) else { return }
         let parameters: Parameters = ["language": "ko-KR"]
         fetchResult(url: url, params: parameters, completionHandler: completionHandler)
     }
     
-    
+    func fetchPosterData(completionHandler: @escaping (MovieImageContainer) -> Void) {
+        guard let url = URL(string: TMDB.movieImageURL) else { return }
+        fetchResult(url: url, params: nil, completionHandler: completionHandler)
+    }
     
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PosterContainer {
+struct PosterContainer: Decodable {
     let page: Int
     let results: [Poster]
     let totalPages: Int
@@ -21,10 +21,10 @@ struct PosterContainer {
     }
 }
 
-struct Poster {
+struct Poster: Decodable {
     let posterPath: String
-    var posterUrl: String {
-        return "\(TMDB.imageUrlString)\(posterPath)"
+    var posterURL: String {
+        return "\(TMDB.imageDBURL)\(posterPath)"
     }
     
     enum CodingKeys: String, CodingKey {
