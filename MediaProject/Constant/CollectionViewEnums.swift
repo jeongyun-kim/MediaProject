@@ -13,10 +13,11 @@ enum CollectionViewTitle: String {
     case posters = "포스터"
 }
 
-enum CollectionViewType: String {
-    case search = "검색결과가 없습니다 :( "
-    case recommend = "관련 추천 영화가 없습니다 X( "
-    case similar = "비슷한 영화가 없어요 T^T"
+enum CollectionViewEmptyViewText: String, CaseIterable {
+    case isEmptySimilar = "비슷한 영화가 없어요 T^T"
+    case isEmptyRecommend = "관련 추천 영화가 없습니다 X( "
+    case isEmptyPoster = "포스터 데이터가 없습니다 X< "
+    case isEmptySearch = "검색결과가 없습니다 :( "
 }
 
 enum PosterCollectionViewTitle: String, CaseIterable {

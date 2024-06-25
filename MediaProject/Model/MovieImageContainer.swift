@@ -8,13 +8,14 @@
 import Foundation
 
 struct MovieImageContainer: Decodable {
-    let backdrops: [MovieImage]
+    let posters: [MovieImage]
 }
       
 struct MovieImage: Decodable {
-    let filePath: String
-    var fileURL: String {
-        return "\(TMDB.imageDBURL)\(filePath)"
+    let filePath: String?
+    var fileURL: String? {
+        guard let imagePath = filePath else { return nil }
+        return "\(TMDB.imageDBURL)\(imagePath)"
     }
     
     enum CodingKeys: String, CodingKey {

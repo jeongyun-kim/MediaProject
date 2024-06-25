@@ -22,9 +22,10 @@ struct PosterContainer: Decodable {
 }
 
 struct Poster: Decodable {
-    let posterPath: String
-    var posterURL: String {
-        return "\(TMDB.imageDBURL)\(posterPath)"
+    let posterPath: String?
+    var posterURL: String? {
+        guard let imagePath = posterPath else { return nil }
+        return "\(TMDB.imageDBURL)\(imagePath)"
     }
     
     enum CodingKeys: String, CodingKey {

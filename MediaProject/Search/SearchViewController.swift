@@ -21,7 +21,7 @@ class SearchViewController: UIViewController, SetupView {
             if movieList.count > 0 {
                 collectionView.restore()
             } else {
-                collectionView.setupEmptyView(.search)
+                collectionView.setupEmptyView(.isEmptySearch)
             }
         }
     }

@@ -11,14 +11,14 @@ import Kingfisher
 
 class CastingViewController: UIViewController, SetupView {
     
-    lazy var movie: Movie? = nil
+    var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)
     
     lazy var overview: Overview = Overview(overview: "")
     
-    lazy var mainImageView: UIImageView = {
+    private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        if let imagePath = movie!.backdrop_path {
+        if let imagePath = movie.backdrop_path {
             TMDB.imagePath = imagePath
         }
         imageView.kf.setImage(with: TMDB.movieImageUrl)
@@ -26,21 +26,22 @@ class CastingViewController: UIViewController, SetupView {
         return imageView
     }()
     
-    lazy var posterImageView: UIImageView = {
+    private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray5
-        guard let imagePath = movie!.poster_path else { return imageView }
-        TMDB.imagePath = imagePath
+        if let imagePath = movie.poster_path {
+            TMDB.imagePath = imagePath
+        }
         imageView.kf.setImage(with: TMDB.movieImageUrl)
         return imageView
     }()
     
-    lazy var movieTitleLabel = CustomLabel(text: movie!.title, size: 24, color: .white, weight: .bold)
+    private lazy var movieTitleLabel = CustomLabel(text: movie.title, size: 24, color: .white, weight: .bold)
 
-    lazy var tableView = UITableView()
+    private let tableView = UITableView()
     
-    lazy var castingList: [Actor] = [] {
+    private var castingList: [Actor] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -48,14 +49,14 @@ class CastingViewController: UIViewController, SetupView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TMDB.castingUrl = "\(movie!.id)"
+        TMDB.movieId = movie.id
         setupNavigation()
         setupHierarchy()
         setupConstraints()
         setupUI()
         fetchCasting()
         setupTableView()
-        overview = movie.map { Overview(overview: $0.overview )}!
+        overview = Overview(overview: movie.overview)
     }
     
     func setupHierarchy() {
@@ -107,7 +108,7 @@ class CastingViewController: UIViewController, SetupView {
     }
     
     func setupNavigation() {
-        navigationItem.title = movie?.title
+        navigationItem.title = movie.title
     }
     
     func setupUI() {
