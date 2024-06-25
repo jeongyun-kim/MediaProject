@@ -34,7 +34,7 @@ class MovieTableViewCell: UITableViewCell, SetupCell {
     let moreLabel = CustomLabel(text: LabelText.moreLabel.rawValue, size: 13)
     let moreImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: ButtonImage.more.rawValue)
+        imageView.image = UIImage(systemName: ButtonImageCase.more.rawValue)
         imageView.tintColor = .black
         return imageView
     }()

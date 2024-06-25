@@ -12,10 +12,11 @@ enum CornerRadius {
     static let imageViewCornerRadius = CGFloat(6)
 }
 
-enum ButtonImage: String {
+enum ButtonImageCase: String {
     case mainLeftBarButton = "list.bullet"
     case mainRightBarButton = "magnifyingglass"
     case more = "ellipsis"
+    case moreCircle = "ellipsis.circle"
 }
 
 enum LabelText: String {
@@ -26,19 +27,5 @@ enum LabelText: String {
     case overviewLabel = "줄거리"
 }
 
-enum DetailSectionTitles: String, CaseIterable {
-    case overview = "줄거리"
-    case casting = "캐스팅"
-}
 
-enum CollectionViewTitle: String {
-    case similar = "비슷한 영화"
-    case recommend = "추천 영화"
-    case posters = "포스터"
-}
 
-enum CollectionViewType: String {
-    case search = "검색결과가 없습니다 :( "
-    case recommend = "관련 추천 영화가 없습니다 X( "
-    case similar = "비슷한 영화가 없어요 T^T"
-}

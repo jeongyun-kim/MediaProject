@@ -9,12 +9,6 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-enum PosterCollectionViewTitle: String, CaseIterable {
-    case similaer = "비슷한 영화"
-    case recommend = "추천 영화"
-    case poster = "포스터"
-}
-
 class PosterViewController: BaseTableViewController {
     
     var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)    
@@ -47,7 +41,7 @@ class PosterViewController: BaseTableViewController {
     
     override func setupNavigation() {
         navigationItem.title = movie.title
-        let rightBarItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
+        let rightBarItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.moreCircle.rawValue), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = rightBarItem
         navigationController?.navigationBar.prefersLargeTitles = true
     }

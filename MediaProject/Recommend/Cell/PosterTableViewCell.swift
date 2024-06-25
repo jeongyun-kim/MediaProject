@@ -8,11 +8,6 @@
 import UIKit
 import SnapKit
 
-enum PosterCollectionViewCellType {
-    case normal
-    case poster
-}
-
 class PosterTableViewCell: BaseTableViewCell {
     
     let titleLabel: UILabel = {
