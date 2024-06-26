@@ -68,7 +68,7 @@ enum NetworkRequestCase {
     
     var errorMessage: String {
         switch self {
-        case .movie:
+        case .movie, .casting:
             return "데이터를 불러오는데 실패했습니다"
         case .search:
             return "잠시 후에 다시 시도해주세요"

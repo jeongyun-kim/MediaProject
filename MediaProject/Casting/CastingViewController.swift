@@ -9,11 +9,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CastingViewController: UIViewController, SetupView {
+class CastingViewController: BaseViewControllerNoLargeTitle {
     
     var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)
-    
     lazy var overview: Overview = Overview(overview: "")
+    private var castingList: [Actor] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
@@ -22,10 +26,8 @@ class CastingViewController: UIViewController, SetupView {
             guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
             imageView.kf.setImage(with: url)
         }
-       
         return imageView
     }()
-    
     private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -34,39 +36,29 @@ class CastingViewController: UIViewController, SetupView {
             guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
             imageView.kf.setImage(with: url)
         }
-     
         return imageView
     }()
-    
     private lazy var movieTitleLabel = CustomLabel(text: movie.title, size: 24, color: .white, weight: .bold)
-
     private let tableView = UITableView()
-    
-    private var castingList: [Actor] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
-        setupHierarchy()
-        setupConstraints()
-        setupUI()
         fetchCasting()
-        setupTableView()
         overview = Overview(overview: movie.overview)
     }
     
-    func setupHierarchy() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func setupHierarchy() {
         view.addSubview(mainImageView)
         view.addSubview(movieTitleLabel)
         view.addSubview(posterImageView)
         view.addSubview(tableView)
     }
     
-    func setupConstraints() {
+    override func setupConstraints() {
         mainImageView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(view.snp.height).multipliedBy(0.25)
@@ -90,7 +82,7 @@ class CastingViewController: UIViewController, SetupView {
         }
     }
     
-    func setupTableView() {
+    override func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -101,22 +93,24 @@ class CastingViewController: UIViewController, SetupView {
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
+    
+    override func setupNavigation() {
+        navigationItem.title = movie.title
+    }
+    
+    override func setupUI() {
+        view.backgroundColor = .systemBackground
+    }
+
     private func fetchCasting() {
         NetworkService.shared.fetchCastingData(movieId: movie.id) { data, error in
             if let data = data {
                 self.castingList = data.cast
             } else {
-                
+                guard let errorMessage = error else { return }
+                self.showToast(message: errorMessage)
             }
         }
-    }
-    
-    func setupNavigation() {
-        navigationItem.title = movie.title
-    }
-    
-    func setupUI() {
-        view.backgroundColor = .systemBackground
     }
 }
 
