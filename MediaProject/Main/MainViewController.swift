@@ -8,44 +8,38 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController, SetupView {
+class MainViewController: BaseViewControllerNoLargeTitle {
     
     // 영화
-    var movieList: [Movie] = [] {
+    private var movieList: [Movie] = [] {
         didSet {
             tableView.reloadData()
         }
     }
     // 장르
-    var genreDict: [Int: String] = [:] {
+    private var genreDict: [Int: String] = [:] {
         didSet {
             tableView.reloadData()
         }
     }
-    let border: UIView = CustomBorder(color: .systemGray5)
-    let tableView = UITableView()
+    private let border: UIView = CustomBorder(color: .systemGray5)
+    private let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
-        setupHierarchy()
-        setupConstraints()
         fetchDatas()
-        setupTableView()
-        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
-    func setupHierarchy() {
+    override func setupHierarchy() {
         view.addSubview(border)
         view.addSubview(tableView)
     }
     
-    func setupConstraints() {
+    override func setupConstraints() {
         border.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
@@ -57,7 +51,7 @@ class MainViewController: UIViewController, SetupView {
         }
     }
     
-    func setupTableView() {
+    override func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -69,17 +63,13 @@ class MainViewController: UIViewController, SetupView {
         tableView.separatorStyle = .none
     }
     
-    func setupNavigation() {
+    override func setupNavigation() {
         let leftItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.mainLeftBarButton.rawValue), style: .plain, target: self, action: nil)
         let rightItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.mainRightBarButton.rawValue), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationItem.title = "현재 급상승 중인 영화"
         navigationItem.backButtonTitle = ""
-    }
-    
-    func setupUI() {
-        view.backgroundColor = .systemBackground
     }
     
     @objc func searchBtnTapped(_ sender: UIButton) {
@@ -134,10 +124,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PosterViewController()
+        let vc = CastingViewController()
         let data = movieList[indexPath.row]
         vc.movie = data
-        //vc.overview = Overview(overview: data.overview)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
