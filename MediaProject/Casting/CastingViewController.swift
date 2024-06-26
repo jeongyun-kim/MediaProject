@@ -96,6 +96,9 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
     
     override func setupNavigation() {
         navigationItem.title = movie.title
+        let rightBarItem = UIBarButtonItem(title: "관련 콘텐츠", style: .plain, target: self, action: #selector(rightBarBtnTapped))
+        navigationItem.rightBarButtonItem = rightBarItem
+        navigationItem.backButtonTitle = ""
     }
     
     override func setupUI() {
@@ -111,6 +114,12 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
                 self.showToast(message: errorMessage)
             }
         }
+    }
+    
+    @objc func rightBarBtnTapped(_ sender: UIButton) {
+        let vc = PosterViewController()
+        vc.movie = movie
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
