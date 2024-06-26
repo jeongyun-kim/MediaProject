@@ -7,8 +7,9 @@
 
 import UIKit
 
-class LocalNotification {
-    static let noti = LocalNotification()
+class LocalNotificationCenter {
+    private init() { }
+    static let noti = LocalNotificationCenter()
     
     func sendNotifiacation() {
         NetworkService.shared.fetchMovieData { result in
