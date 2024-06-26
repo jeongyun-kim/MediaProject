@@ -12,55 +12,47 @@ class NetworkService {
     private init() {}
     static let shared = NetworkService()
     
-    func fetchResult<T: Decodable>(url: URL, params: Parameters?, completionHandler: @escaping (T) -> Void) {
-        AF.request(url, parameters: params, headers: Header.header).responseDecodable(of: T.self) { response in
+    typealias CompletionHandler<T: Decodable> = (T?, String?) -> Void
+    
+    func fetchResult<T: Decodable>(request: NetworkRequestCase, completionHandler: @escaping CompletionHandler<T>) {
+        guard let url = request.endPoint else { return }
+        AF.request(url, parameters: request.params, encoding: URLEncoding.queryString, headers: request.header).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let value):
-                completionHandler(value)
+                completionHandler(value, nil)
             case .failure(let error):
-                print(error)
+                completionHandler(nil, "\(error),request.errorMessage")
             }
         }
     }
 }
 
 extension NetworkService: NetworkProtocol {
-    func fetchCastingData(completionHandler: @escaping (Casting) -> Void) {
-        guard let url = URL(string: TMDB.castingUrl) else { return }
-        fetchResult(url: url, params: nil, completionHandler: completionHandler)
+    func fetchCastingData(movieId: Int, completionHandler: @escaping (Casting?, String?) -> Void) {
+        fetchResult(request: .casting(movieId: movieId), completionHandler: completionHandler)
     }
     
-    func fetchMovieData(completionHandler: @escaping (MovieContainer) -> Void) {
-        guard let url = URL(string: TMDB.movieUrl) else { return }
-        fetchResult(url: url, params: nil, completionHandler: completionHandler)
+    func fetchMovieData(completionHandler: @escaping (MovieContainer?, String?) -> Void) {
+        fetchResult(request: .movie, completionHandler: completionHandler)
     }
     
-    func fetchGenreData(completionHandler: @escaping (Genres) -> Void) {
-        guard let url = URL(string: TMDB.genreUrl) else { return }
-        fetchResult(url: url, params: nil, completionHandler: completionHandler)
+    func fetchGenreData(completionHandler: @escaping (Genres?, String?) -> Void) {
+        fetchResult(request: .genre, completionHandler: completionHandler)
     }
     
-    func fetchSearchData(query: String, page: Int, completionHandler: @escaping (MovieContainer) -> Void) {
-        guard let url = URL(string: TMDB.searchUrl) else { return }
-        let parameters: Parameters = ["query": query, "include_adult": false, "language": "ko-KR", "page": page]
-        fetchResult(url: url, params: parameters, completionHandler: completionHandler)
+    func fetchSearchData(query: String, page: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void) {
+        fetchResult(request: .search(query: query, page: page), completionHandler: completionHandler)
     }
     
-    func fetchSimilarMovieData(completionHandler: @escaping (PosterContainer) -> Void) {
-        guard let url = URL(string: TMDB.similarMovieURL) else { return }
-        let parameters: Parameters = ["language": "ko-KR"]
-        fetchResult(url: url, params: parameters, completionHandler: completionHandler)
+    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void) {
+        fetchResult(request: .similarMoviePoster(movieId: movieId), completionHandler: completionHandler)
     }
     
-    func fetchRecommendMovieData(completionHandler: @escaping (PosterContainer) -> Void) {
-        guard let url = URL(string: TMDB.recommendMovieURL) else { return }
-        let parameters: Parameters = ["language": "ko-KR"]
-        fetchResult(url: url, params: parameters, completionHandler: completionHandler)
+    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void) {
+        fetchResult(request: .recommendMoviePoster(movieId: movieId), completionHandler: completionHandler)
     }
     
-    func fetchPosterData(completionHandler: @escaping (MovieImageContainer) -> Void) {
-        guard let url = URL(string: TMDB.movieImageURL) else { return }
-        fetchResult(url: url, params: nil, completionHandler: completionHandler)
+    func fetchPosterData(movieId: Int, completionHandler: @escaping (MovieImageContainer?, String?) -> Void) {
+        fetchResult(request: .moviePoster(movieId: movieId), completionHandler: completionHandler)
     }
-    
 }

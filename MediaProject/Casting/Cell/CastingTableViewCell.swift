@@ -54,8 +54,8 @@ class CastingTableViewCell: UITableViewCell, SetupView {
     }
     
     func configureCell(_ data: Actor) {
-        TMDB.imagePath = data.profilePath
-        profileImageView.kf.setImage(with: TMDB.movieImageUrl)
+        guard let url = URL(string: TMDB.imageBaseURL + data.profilePath) else { return }
+        profileImageView.kf.setImage(with: url)
         actorNameLabel.text = data.name
         characterLabel.text = data.character
         popularityLabel.text = "\(String(format: "%.1f", data.popularity))"

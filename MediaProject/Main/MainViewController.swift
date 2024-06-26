@@ -30,8 +30,7 @@ class MainViewController: UIViewController, SetupView {
         setupNavigation()
         setupHierarchy()
         setupConstraints()
-        fetchMovieGenres()
-        fetchMovieDatas()
+        fetchDatas()
         setupTableView()
         setupUI()
     }
@@ -88,18 +87,37 @@ class MainViewController: UIViewController, SetupView {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    // 장르 리스트 딕셔너리로 가져오기
-    // - [아이디(Int) : 장르명(String)]
-    func fetchMovieGenres()  {
-        NetworkService.shared.fetchGenreData { result in
-            self.genreDict = result.genreDict
+    private func fetchDatas() {
+        let group = DispatchGroup()
+        
+        group.enter()
+        // 영화 리스트 가져오기
+        DispatchQueue.global().async(group:group) {
+            NetworkService.shared.fetchMovieData { data, error in
+                if let error = error {
+                    self.showToast(message: error)
+                } else {
+                    guard let data = data else { return }
+                    self.movieList = data.results
+                }
+                group.leave()
+            }
         }
-    }
-
-    // 영화 리스트 가져오기
-    func fetchMovieDatas() {
-        NetworkService.shared.fetchMovieData { result in
-            self.movieList = result.results
+        
+        group.enter()
+        // - [아이디(Int) : 장르명(String)]
+        // 장르 리스트 딕셔너리로 가져오기
+        DispatchQueue.global().async(group: group) {
+            NetworkService.shared.fetchGenreData { data, error in
+                if let data = data {
+                    self.genreDict = data.genreDict
+                }
+                group.leave()
+            }
+        }
+                
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
         }
     }
 }

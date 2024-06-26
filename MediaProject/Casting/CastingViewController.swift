@@ -19,10 +19,10 @@ class CastingViewController: UIViewController, SetupView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         if let imagePath = movie.backdrop_path {
-            TMDB.imagePath = imagePath
+            guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
+            imageView.kf.setImage(with: url)
         }
-        imageView.kf.setImage(with: TMDB.movieImageUrl)
-   
+       
         return imageView
     }()
     
@@ -31,9 +31,10 @@ class CastingViewController: UIViewController, SetupView {
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray5
         if let imagePath = movie.poster_path {
-            TMDB.imagePath = imagePath
+            guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
+            imageView.kf.setImage(with: url)
         }
-        imageView.kf.setImage(with: TMDB.movieImageUrl)
+     
         return imageView
     }()
     
@@ -49,7 +50,6 @@ class CastingViewController: UIViewController, SetupView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TMDB.movieId = movie.id
         setupNavigation()
         setupHierarchy()
         setupConstraints()
@@ -102,8 +102,12 @@ class CastingViewController: UIViewController, SetupView {
     }
     
     private func fetchCasting() {
-        NetworkService.shared.fetchCastingData { result in
-            self.castingList = result.cast
+        NetworkService.shared.fetchCastingData(movieId: movie.id) { data, error in
+            if let data = data {
+                self.castingList = data.cast
+            } else {
+                
+            }
         }
     }
     

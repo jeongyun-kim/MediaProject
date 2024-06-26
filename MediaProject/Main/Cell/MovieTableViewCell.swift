@@ -142,12 +142,12 @@ class MovieTableViewCell: UITableViewCell, SetupCell {
         gradeLabel.text = String(format: "%.1f", data.vote_average)
         
         if let imagePath = data.poster_path {
-            TMDB.imagePath = imagePath
+            guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return  }
+            movieImageView.kf.setImage(with: url)
         }
-        movieImageView.kf.setImage(with: TMDB.movieImageUrl)
         
         titleLabel.text = data.title
-        
+
         descLabel.text = data.overview
         
         var text = ""
@@ -156,7 +156,6 @@ class MovieTableViewCell: UITableViewCell, SetupCell {
             if let genre = genreDict[$0] {
                 text += "#\(genre) "
             }
-            
         }
         genreLabel.text = text
     }

@@ -18,11 +18,11 @@ class PosterViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchResults()
     }
     
     override func setupHierarchy() {
         view.addSubview(tableView)
-        fetchResults()
     }
     
     override func setupConstraints() {
@@ -45,36 +45,44 @@ class PosterViewController: BaseTableViewController {
         navigationItem.rightBarButtonItem = rightBarItem
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
+
     private func fetchResults() {
-        TMDB.movieId = movie.id
         let group = DispatchGroup()
+        let id = movie.id
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkService.shared.fetchSimilarMovieData { result in
-                self.posterList[0] = result.results.compactMap { $0.posterURL }
+            NetworkService.shared.fetchSimilarMovieData(movieId: id) { data, error in
+                guard let data = data else { return }
+                self.posterList[0] = data.results.compactMap { $0.posterURL }
                 group.leave()
             }
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkService.shared.fetchRecommendMovieData { result in
-                self.posterList[1] = result.results.compactMap { $0.posterURL }
+            NetworkService.shared.fetchRecommendMovieData(movieId: id) { data, error in
+                guard let data = data else { return }
+                self.posterList[1] = data.results.compactMap { $0.posterURL }
                 group.leave()
             }
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkService.shared.fetchPosterData { result in
-                self.posterList[2] = result.posters.compactMap { $0.fileURL }
+            NetworkService.shared.fetchPosterData(movieId: id) { data, error in
+                if let data = data {
+                    self.posterList[2] = data.backdrops.compactMap { $0.fileURL }
+                } else {
+                    guard let error = error else { return }
+                    print(error)
+                }
                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
+            //print(self.posterList)
             self.tableView.reloadData()
         }
     }

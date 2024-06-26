@@ -34,12 +34,12 @@ struct Movie: Decodable {
     
     var posterURL: URL? {
         guard let imagePath = poster_path else { return nil }
-        guard let url = URL(string: "\(TMDB.imageDBURL)\(imagePath)") else { return nil }
+        guard let url = URL(string: "\(TMDB.imageBaseURL)\(imagePath)") else { return nil }
         return url
     }
     var mainImageURL: URL? {
         guard let imagePath = backdrop_path else { return nil }
-        guard let url = URL(string: "\(TMDB.imageDBURL)\(imagePath)") else { return nil }
+        guard let url = URL(string: "\(TMDB.imageBaseURL)\(imagePath)") else { return nil }
         return url
     }
 }

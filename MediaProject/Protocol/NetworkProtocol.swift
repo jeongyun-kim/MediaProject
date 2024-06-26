@@ -7,12 +7,16 @@
 
 import Foundation
 
+enum CompletionHandler {
+    
+}
+
 protocol NetworkProtocol {
-    func fetchCastingData(completionHandler: @escaping (Casting) -> Void)
-    func fetchMovieData(completionHandler: @escaping (MovieContainer) -> Void)
-    func fetchGenreData(completionHandler: @escaping (Genres) -> Void)
-    func fetchSearchData(query: String, page: Int, completionHandler: @escaping (MovieContainer) -> Void)
-    func fetchSimilarMovieData(completionHandler: @escaping (PosterContainer) -> Void)
-    func fetchRecommendMovieData(completionHandler: @escaping (PosterContainer) -> Void)
-    func fetchPosterData(completionHandler: @escaping (MovieImageContainer) -> Void)
+    func fetchCastingData(movieId: Int, completionHandler: @escaping (Casting?, String?) -> Void)
+    func fetchMovieData(completionHandler: @escaping (MovieContainer?, String?) -> Void)
+    func fetchGenreData(completionHandler: @escaping (Genres?, String?) -> Void)
+    func fetchSearchData(query: String, page: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void)
+    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void)
+    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void)
+    func fetchPosterData(movieId: Int, completionHandler: @escaping (MovieImageContainer?, String?) -> Void)
 }

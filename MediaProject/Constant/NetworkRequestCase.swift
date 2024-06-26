@@ -13,17 +13,12 @@ enum NetworkRequestCase {
     case genre
     case search(query: String, page: Int)
     case casting(movieId: Int)
-    case image(imagePath: String)
-    case similarMovie(movieId: Int)
-    case recommendMovie(movieId: Int)
+    case moviePoster(movieId: Int)
+    case similarMoviePoster(movieId: Int)
+    case recommendMoviePoster(movieId: Int)
     
     var baseURL: String {
-        switch self {
-        case .movie, .genre, .search, .similarMovie, .recommendMovie, .casting:
-            return TMDB.baseURL
-        case .image:
-            return TMDB.imageBaseURL
-        }
+        return TMDB.baseURL
     }
 
     var endPoint: URL? {
@@ -37,13 +32,13 @@ enum NetworkRequestCase {
         case .search:
             guard let searchURL = URL(string: baseURL + "search/movie") else { return nil }
             return searchURL
-        case .image(let imagePath):
-            guard let imageURL = URL(string: baseURL + "\(imagePath)") else { return nil }
+        case .moviePoster(let movieId):
+            guard let imageURL = URL(string: baseURL + "movie/\(movieId)/images") else { return nil }
             return imageURL
-        case .similarMovie(let movieId):
+        case .similarMoviePoster(let movieId):
             guard let similarURL = URL(string: baseURL + "movie/\(movieId)/similar") else { return nil }
             return similarURL
-        case .recommendMovie(let movieId):
+        case .recommendMoviePoster(let movieId):
             guard let recommendURL = URL(string: baseURL + "movie/\(movieId)/recommendations") else { return nil }
             return recommendURL
         case .casting(let movieId):
@@ -62,12 +57,23 @@ enum NetworkRequestCase {
     
     var params: Parameters {
         switch self {
-        case .movie, .genre, .casting, .image:
+        case .movie, .genre, .casting, .similarMoviePoster, .recommendMoviePoster:
             return ["language": "ko-KR"]
         case .search(let query, let page):
             return ["query": query, "include_adult": false, "language": "ko-KR", "page": page]
-        case .similarMovie, .recommendMovie:
-            return ["language": "ko-KR"]
+        case .moviePoster:
+            return ["": ""]
+        }
+    }
+    
+    var errorMessage: String {
+        switch self {
+        case .movie:
+            return "데이터를 불러오는데 실패했습니다"
+        case .search:
+            return "잠시 후에 다시 시도해주세요"
+        default:
+            return ""
         }
     }
 }

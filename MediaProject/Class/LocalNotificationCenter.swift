@@ -12,8 +12,10 @@ class LocalNotificationCenter {
     static let noti = LocalNotificationCenter()
     
     func sendNotifiacation() {
-        NetworkService.shared.fetchMovieData { result in
-            guard let movie = result.results.first else { return }
+
+        NetworkService.shared.fetchMovieData { data, error  in
+            guard let data = data else { return }
+            guard let movie = data.results.first else { return }
             
             let content = UNMutableNotificationContent()
             content.title = "오늘의 영화 알림"

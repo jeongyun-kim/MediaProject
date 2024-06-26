@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E07564562C2C03EF0065413D /* NetworkRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564552C2C03EF0065413D /* NetworkRequestCase.swift */; };
+		E07564582C2C3FCD0065413D /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */; };
 		E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818D2C16D76000538021 /* AppDelegate.swift */; };
 		E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818F2C16D76000538021 /* SceneDelegate.swift */; };
 		E0A881972C16D76100538021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A881962C16D76100538021 /* Assets.xcassets */; };
@@ -46,10 +48,12 @@
 		E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */; };
 		E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B42C268E79008F795F /* NetworkService.swift */; };
 		E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */; };
-		E0BAE9BB2C2698F1008F795F /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */; };
+		E0BAE9BB2C2698F1008F795F /* LocalNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAE9BA2C2698F1008F795F /* LocalNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E07564552C2C03EF0065413D /* NetworkRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestCase.swift; sourceTree = "<group>"; };
+		E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		E0A8818A2C16D76000538021 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8818D2C16D76000538021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A8818F2C16D76000538021 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +91,7 @@
 		E0BAE9922C216DA2008F795F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		E0BAE9B42C268E79008F795F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E0BAE9B62C26974E008F795F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
-		E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		E0BAE9BA2C2698F1008F795F /* LocalNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E07564542C2C035B0065413D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E0BAE9BA2C2698F1008F795F /* LocalNotificationCenter.swift */,
+				E0BAE9B42C268E79008F795F /* NetworkService.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		E0A881812C16D76000538021 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		E0A8818C2C16D76000538021 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				E07564542C2C035B0065413D /* Class */,
 				E0B5E5AD2C2A83C70024ADB8 /* Base */,
 				E0B0B68B2C19E22A00A24154 /* Extension */,
 				E0A881F52C19DBCF00538021 /* Constant */,
@@ -141,8 +155,6 @@
 				E0A881982C16D76100538021 /* LaunchScreen.storyboard */,
 				E0A8819B2C16D76100538021 /* Info.plist */,
 				E0A881A32C16D95A00538021 /* APIKey.swift */,
-				E0BAE9B42C268E79008F795F /* NetworkService.swift */,
-				E0BAE9BA2C2698F1008F795F /* LocalNotification.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -237,6 +249,7 @@
 				E0A881EC2C19D61800538021 /* Enums.swift */,
 				E0B5E5CF2C2AE8B10024ADB8 /* CollectionViewEnums.swift */,
 				E0B5E5D12C2AE90F0024ADB8 /* TableViewEnums.swift */,
+				E07564552C2C03EF0065413D /* NetworkRequestCase.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -245,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				E0B0B68C2C19E23700A24154 /* CollectionView + Extension.swift */,
+				E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -386,10 +400,12 @@
 				E0B5E5D22C2AE90F0024ADB8 /* TableViewEnums.swift in Sources */,
 				E0B5E5C32C2ACD550024ADB8 /* MovieImageContainer.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
+				E07564562C2C03EF0065413D /* NetworkRequestCase.swift in Sources */,
 				E0B5E5B92C2AC3B20024ADB8 /* BaseTableViewController.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
-				E0BAE9BB2C2698F1008F795F /* LocalNotification.swift in Sources */,
+				E0BAE9BB2C2698F1008F795F /* LocalNotificationCenter.swift in Sources */,
 				E0B5E5882C295B790024ADB8 /* PosterViewController.swift in Sources */,
+				E07564582C2C3FCD0065413D /* UIViewController + Extension.swift in Sources */,
 				E0B5E5BF2C2AC8DD0024ADB8 /* BaseTableViewCell.swift in Sources */,
 				E0A881D72C1854ED00538021 /* SearchCollectionViewCell.swift in Sources */,
 				E0B5E5C12C2AC9420024ADB8 /* PosterTableViewCell.swift in Sources */,

@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("권한 X")
             case .authorized:
                 print("권한 O")
-                LocalNotification.noti.sendNotifiacation()
+                LocalNotificationCenter.noti.sendNotifiacation()
             case .provisional:
                 print("임시 중단")
             case .ephemeral:

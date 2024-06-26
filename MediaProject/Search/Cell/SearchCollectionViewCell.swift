@@ -29,8 +29,8 @@ class SearchCollectionViewCell: UICollectionViewCell, SetupView {
     }
     
     func configureCell(_ data: String) {
-        TMDB.imagePath = data
-        imageView.kf.setImage(with: TMDB.movieImageUrl)
+        guard let url = URL(string: TMDB.imageBaseURL + data) else { return }
+        imageView.kf.setImage(with: url)
     }
     
     required init?(coder: NSCoder) {
