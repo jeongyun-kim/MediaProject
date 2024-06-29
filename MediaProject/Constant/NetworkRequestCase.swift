@@ -48,7 +48,7 @@ enum NetworkRequestCase {
     }
     
     var header: HTTPHeaders {
-        return Header.header
+        return TMDBHeader.header
     }
     
     var method: HTTPMethod {
@@ -66,14 +66,16 @@ enum NetworkRequestCase {
         }
     }
     
-    var errorMessage: String {
+    var errorMessage: String? {
         switch self {
         case .movie, .casting:
             return "데이터를 불러오는데 실패했습니다"
+        case .similarMoviePoster, .recommendMoviePoster:
+            return "관련 영화를 불러오는데 실패했습니다"
         case .search:
             return "잠시 후에 다시 시도해주세요"
         default:
-            return ""
+            return nil
         }
     }
 }

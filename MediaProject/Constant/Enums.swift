@@ -17,6 +17,8 @@ enum ButtonImageCase: String {
     case mainRightBarButton = "magnifyingglass"
     case more = "ellipsis"
     case moreCircle = "ellipsis.circle"
+    case overviewOpen = "chevron.down"
+    case overviewClose = "chevron.up"
 }
 
 enum LabelText: String {

@@ -67,9 +67,13 @@ class PosterViewController: BaseTableViewController {
         group.enter()
         DispatchQueue.global().async(group: group) {
             NetworkService.shared.fetchSimilarMovieData(movieId: id) { data, error in
-                guard let data = data else { return }
-                self.posterList[0] = data.results.compactMap { $0.posterURL }
-                self.movieDataList[0] = data.results.filter { $0.posterURL != nil }
+                if let error = error {
+                    self.showToast(message: error)
+                } else {
+                    guard let data = data else { return }
+                    self.posterList[0] = data.results.compactMap { $0.posterURL }
+                    self.movieDataList[0] = data.results.filter { $0.posterURL != nil }
+                }
                 group.leave()
             }
         }
@@ -77,9 +81,13 @@ class PosterViewController: BaseTableViewController {
         group.enter()
         DispatchQueue.global().async(group: group) {
             NetworkService.shared.fetchRecommendMovieData(movieId: id) { data, error in
-                guard let data = data else { return }
-                self.posterList[1] = data.results.compactMap { $0.posterURL }
-                self.movieDataList[1] = data.results.filter { $0.posterURL != nil }
+                if let error = error {
+                    self.showToast(message: error)
+                } else {
+                    guard let data = data else { return }
+                    self.posterList[1] = data.results.compactMap { $0.posterURL }
+                    self.movieDataList[1] = data.results.filter { $0.posterURL != nil }
+                }
                 group.leave()
             }
         }
@@ -91,7 +99,7 @@ class PosterViewController: BaseTableViewController {
                     self.posterList[2] = data.backdrops.compactMap { $0.fileURL }
                 } else {
                     guard let error = error else { return }
-                    print(error)
+                    self.showToast(message: error)
                 }
                 group.leave()
             }

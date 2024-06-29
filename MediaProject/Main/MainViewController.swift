@@ -46,7 +46,8 @@ class MainViewController: BaseViewControllerNoLargeTitle {
         }
         
         tableView.snp.makeConstraints {
-            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view)
             $0.top.equalTo(border.snp.bottom)
         }
     }
