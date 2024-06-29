@@ -21,6 +21,7 @@ class PosterViewController: BaseTableViewController {
     
     var movie: Movie = Movie(backdropPath: "", id: 0, originalTitle: "", overview: "", posterPath: "", mediaType: "", adult: false, title: "", originalLang: "", genreIds: [], popularity: 0, releaseDate: "", video: false, voteAverage: 0, voteCount: 0)
     private var posterList: [[String]] = [[], [], []]
+    private var movieDataList: [[Movie]] = [[], [], []]
     
     private let tableView = UITableView()
     
@@ -67,6 +68,7 @@ class PosterViewController: BaseTableViewController {
             NetworkService.shared.fetchSimilarMovieData(movieId: id) { data, error in
                 guard let data = data else { return }
                 self.posterList[0] = data.results.compactMap { $0.posterURL }
+                self.movieDataList[0] = data.results.filter { $0.posterURL != nil }
                 group.leave()
             }
         }
@@ -76,6 +78,7 @@ class PosterViewController: BaseTableViewController {
             NetworkService.shared.fetchRecommendMovieData(movieId: id) { data, error in
                 guard let data = data else { return }
                 self.posterList[1] = data.results.compactMap { $0.posterURL }
+                self.movieDataList[1] = data.results.filter { $0.posterURL != nil }
                 group.leave()
             }
         }
@@ -146,5 +149,13 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let url = URL(string: posterList[collectionView.tag][indexPath.item])
         cell.posterImageView.kf.setImage(with: url)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = collectionView.tag
+        let item = indexPath.item
+        if !movieDataList[section].isEmpty {
+            transition(CastingViewController(movie: movieDataList[section][item]), transionStyle: .push)
+        }
     }
 }
