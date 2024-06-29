@@ -16,29 +16,52 @@ struct MovieContainer: Decodable {
 }
 
 struct Movie: Decodable {
-    let backdrop_path: String?
+    let backdropPath: String?
     let id: Int
-    let original_title: String
+    let originalTitle: String
     let overview: String
-    let poster_path: String?
-    let media_type: String?
+    let posterPath: String?
+    let mediaType: String?
     let adult: Bool
     let title: String
-    let original_language: String
-    let genre_ids: [Int]?
+    let originalLang: String
+    let genreIds: [Int]?
     let popularity: Double
-    let release_date: String
+    let releaseDate: String
     let video: Bool
-    let vote_average: Double
-    let vote_count: Int
+    let voteAverage: Double
+    let voteCount: Int
     
-    var posterURL: URL? {
-        guard let imagePath = poster_path else { return nil }
-        guard let url = URL(string: "\(TMDB.imageBaseURL)\(imagePath)") else { return nil }
-        return url
+    enum CodingKeys: String, CodingKey {
+        case backdropPath = "backdrop_path"
+        case id
+        case originalTitle = "original_title"
+        case overview
+        case posterPath = "poster_path"
+        case mediaType = "media_type"
+        case adult
+        case title
+        case originalLang = "original_language"
+        case genreIds = "genre_ids"
+        case popularity
+        case releaseDate = "release_date"
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
+    
+    var posterURL: String? {
+        guard let imagePath = posterPath else { return nil }
+        return "\(TMDB.imageBaseURL)\(imagePath)"
+    }
+    
+//    var posterURL: URL? {
+//        guard let imagePath = poster_path else { return nil }
+//        guard let url = URL(string: "\(TMDB.imageBaseURL)\(imagePath)") else { return nil }
+//        return url
+//    }
     var mainImageURL: URL? {
-        guard let imagePath = backdrop_path else { return nil }
+        guard let imagePath = backdropPath else { return nil }
         guard let url = URL(string: "\(TMDB.imageBaseURL)\(imagePath)") else { return nil }
         return url
     }
