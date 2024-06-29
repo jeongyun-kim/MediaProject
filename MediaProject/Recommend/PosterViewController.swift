@@ -10,6 +10,14 @@ import SnapKit
 import Kingfisher
 
 class PosterViewController: BaseTableViewController {
+    init(movie: Movie) {
+        super.init(nibName: nil, bundle: nil)
+        self.movie = movie
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)    
     private var posterList: [[String]] = [[], [], []]

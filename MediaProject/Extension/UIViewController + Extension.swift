@@ -12,4 +12,11 @@ extension UIViewController {
     func showToast(message: String) {
         view.makeToast(message, position: .bottom)
     }
+    
+    func transition<T: UIViewController>(_ vc: T, transionStyle: TransitionStyleCase) {
+        switch transionStyle {
+        case .push:
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }

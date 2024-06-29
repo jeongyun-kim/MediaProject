@@ -158,9 +158,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = CastingViewController()
-        vc.movie = movieList[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        transition(CastingViewController(movie: movieList[indexPath.row]), transionStyle: .push)
     }
 }
 

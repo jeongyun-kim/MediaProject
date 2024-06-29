@@ -73,8 +73,7 @@ class MainViewController: BaseViewControllerNoLargeTitle {
     }
     
     @objc func searchBtnTapped(_ sender: UIButton) {
-        let vc = SearchViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        transition(SearchViewController(), transionStyle: .push)
     }
     
     private func fetchDatas() {
@@ -124,9 +123,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CastingViewController()
-        let data = movieList[indexPath.row]
-        vc.movie = data
-        navigationController?.pushViewController(vc, animated: true)
+        transition(CastingViewController(movie: movieList[indexPath.row]), transionStyle: .push)
     }
 }

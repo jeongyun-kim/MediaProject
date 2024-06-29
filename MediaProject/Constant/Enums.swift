@@ -27,5 +27,8 @@ enum LabelText: String {
     case overviewLabel = "줄거리"
 }
 
+enum TransitionStyleCase {
+    case push
+}
 
 
