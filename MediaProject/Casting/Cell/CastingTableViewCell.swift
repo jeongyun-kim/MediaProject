@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CastingTableViewCell: UITableViewCell, SetupView {
+class CastingTableViewCell: BaseTableViewCell {
     let profileImageView: UIImageView = CustomImageView()
     let actorNameLabel = CustomLabel(size: 15, weight: .bold)
     let characterLabel = CustomLabel(size: 14, color: .lightGray)
@@ -21,14 +21,14 @@ class CastingTableViewCell: UITableViewCell, SetupView {
         setupConstraints()
     }
     
-    func setupHierarchy() {
+    override func setupHierarchy() {
         contentView.addSubview(profileImageView)
         contentView.addSubview(actorNameLabel)
         contentView.addSubview(characterLabel)
         contentView.addSubview(popularityLabel)
     }
     
-    func setupConstraints() {
+    override func setupConstraints() {
         profileImageView.snp.makeConstraints {
             $0.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             $0.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(8)
@@ -53,6 +53,10 @@ class CastingTableViewCell: UITableViewCell, SetupView {
         }
     }
     
+    override func configureLayout() {
+        selectionStyle = .none
+    }
+    
     func configureCell(_ data: Actor) {
         guard let url = URL(string: TMDB.imageBaseURL + data.profilePath) else { return }
         profileImageView.kf.setImage(with: url)
@@ -60,7 +64,6 @@ class CastingTableViewCell: UITableViewCell, SetupView {
         characterLabel.text = data.character
         popularityLabel.text = "\(String(format: "%.1f", data.popularity))"
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

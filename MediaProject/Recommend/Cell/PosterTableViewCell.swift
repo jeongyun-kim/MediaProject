@@ -34,6 +34,10 @@ class PosterTableViewCell: BaseTableViewCell {
         }
     }
     
+    override func configureLayout() {
+        selectionStyle = .none
+    }
+    
     static func layout(type: PosterCollectionViewCellType = .normal) -> UICollectionViewCompositionalLayout {
         let width: CGFloat = type == .normal ? 0.3 : 0.45
         let topInset: CGFloat = 0

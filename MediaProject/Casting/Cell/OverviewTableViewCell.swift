@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class OverviewTableViewCell: UITableViewCell, SetupView {
+class OverviewTableViewCell: BaseTableViewCell {
     
     let overviewLabel: UILabel = {
         let label = CustomLabel(size: 14)
@@ -17,7 +17,7 @@ class OverviewTableViewCell: UITableViewCell, SetupView {
     
     let expandImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "chevron.down")
+        imageView.image = UIImage(systemName: ButtonImageCase.overviewOpen.rawValue)
         imageView.tintColor = .darkGray
         return imageView
     }()
@@ -32,12 +32,12 @@ class OverviewTableViewCell: UITableViewCell, SetupView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupHierarchy() {
+    override func setupHierarchy() {
         contentView.addSubview(overviewLabel)
         contentView.addSubview(expandImageView)
     }
     
-    func setupConstraints() {
+    override func setupConstraints() {
         overviewLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
@@ -50,8 +50,12 @@ class OverviewTableViewCell: UITableViewCell, SetupView {
         }
     }
     
+    override func configureLayout() {
+        selectionStyle = .none
+    }
+    
     func configureCell(_ data: Overview) {
-        let expandImage = data.isOpen ? "chevron.up" : "chevron.down"
+        let expandImage = data.isOpen ? ButtonImageCase.overviewClose.rawValue : ButtonImageCase.overviewOpen.rawValue
         let numberLine = data.isOpen ? 0 : 2
         
         overviewLabel.numberOfLines = numberLine

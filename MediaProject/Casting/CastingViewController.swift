@@ -86,7 +86,8 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(mainImageView.snp.bottom).offset(12)
-            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view)
         }
     }
     

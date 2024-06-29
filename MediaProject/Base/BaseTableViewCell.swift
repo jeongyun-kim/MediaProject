@@ -15,7 +15,6 @@ class BaseTableViewCell: UITableViewCell, SetupCell {
         setupHierarchy()
         setupConstraints()
         configureLayout()
-        configureCell()
     }
     
     func setupHierarchy() {
@@ -27,10 +26,6 @@ class BaseTableViewCell: UITableViewCell, SetupCell {
     }
     
     func configureLayout() {
-        
-    }
-    
-    func configureCell() {
         
     }
     

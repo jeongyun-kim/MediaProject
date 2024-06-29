@@ -42,7 +42,8 @@ class PosterViewController: BaseTableViewController {
     override func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view)
         }
     }
     
