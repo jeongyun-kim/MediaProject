@@ -16,7 +16,7 @@ protocol NetworkProtocol {
     func fetchMovieData(completionHandler: @escaping (MovieContainer?, String?) -> Void)
     func fetchGenreData(completionHandler: @escaping (Genres?, String?) -> Void)
     func fetchSearchData(query: String, page: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void)
-    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void)
-    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void)
+    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void)
+    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void)
     func fetchPosterData(movieId: Int, completionHandler: @escaping (MovieImageContainer?, String?) -> Void)
 }

@@ -44,11 +44,11 @@ extension NetworkService: NetworkProtocol {
         fetchResult(request: .search(query: query, page: page), completionHandler: completionHandler)
     }
     
-    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void) {
+    func fetchSimilarMovieData(movieId: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void) {
         fetchResult(request: .similarMoviePoster(movieId: movieId), completionHandler: completionHandler)
     }
     
-    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (PosterContainer?, String?) -> Void) {
+    func fetchRecommendMovieData(movieId: Int, completionHandler: @escaping (MovieContainer?, String?) -> Void) {
         fetchResult(request: .recommendMoviePoster(movieId: movieId), completionHandler: completionHandler)
     }
     

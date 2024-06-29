@@ -63,13 +63,12 @@ class MainViewController: BaseViewControllerNoLargeTitle {
         tableView.separatorStyle = .none
     }
     
-    override func setupNavigation() {
+    override func setupNavigation(title: String) {
+        super.setupNavigation(title: "현재 급상승 중인 영화")
         let leftItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.mainLeftBarButton.rawValue), style: .plain, target: self, action: nil)
         let rightItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.mainRightBarButton.rawValue), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
-        navigationItem.title = "현재 급상승 중인 영화"
-        navigationItem.backButtonTitle = ""
     }
     
     @objc func searchBtnTapped(_ sender: UIButton) {

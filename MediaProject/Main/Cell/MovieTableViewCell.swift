@@ -137,12 +137,12 @@ class MovieTableViewCell: UITableViewCell, SetupCell {
     }
     
     func configureCell(_ data: Movie, _ genreDict: [Int: String]) {
-        releaseDate.text = data.release_date
+        releaseDate.text = data.releaseDate
         
-        gradeLabel.text = String(format: "%.1f", data.vote_average)
+        gradeLabel.text = String(format: "%.1f", data.voteAverage)
         
-        if let imagePath = data.poster_path {
-            guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return  }
+        if let imagePath = data.posterURL {
+            guard let url = URL(string: imagePath) else { return  }
             movieImageView.kf.setImage(with: url)
         }
         
@@ -151,7 +151,7 @@ class MovieTableViewCell: UITableViewCell, SetupCell {
         descLabel.text = data.overview
         
         var text = ""
-        let genres = data.genre_ids?.compactMap { $0 }
+        let genres = data.genreIds?.compactMap { $0 }
         genres?.forEach {
             if let genre = genreDict[$0] {
                 text += "#\(genre) "

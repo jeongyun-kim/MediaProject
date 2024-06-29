@@ -98,9 +98,9 @@ class SearchViewController: UIViewController, SetupView {
         NetworkService.shared.fetchSearchData(query: query, page: page) { data, error  in
             if let data = data {
                 // 포스터 이미지 경로만 -> compactMap으로 nil 아닌 데이터만 가져오기
-                let posterImagePaths = data.results.map { $0.poster_path }.compactMap { $0 }
+                let posterImagePaths = data.results.map { $0.posterPath }.compactMap { $0 }
                 // 검색 결과에서 포스터 이미지가 없는 영화는 가져오지 않으므로 movieList도 poster_path가 nil 이 아닌 데이터만 넣어주기
-                let movies = data.results.filter { $0.poster_path != nil }
+                let movies = data.results.filter { $0.posterPath != nil }
                 if self.page == 1 { // 🔍 page가 1 상태라면 새로운 검색
                     self.movieList = movies
                     self.posters = posterImagePaths

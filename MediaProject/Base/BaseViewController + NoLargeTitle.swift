@@ -13,7 +13,7 @@ class BaseViewControllerNoLargeTitle: UIViewController, SetupView {
         super.viewDidLoad()
         setupHierarchy()
         setupConstraints()
-        setupNavigation()
+        setupNavigation(title: "")
         setupTableView()
         setupUI()
     }
@@ -31,8 +31,9 @@ class BaseViewControllerNoLargeTitle: UIViewController, SetupView {
     
     }
     
-    func setupNavigation() {
-        
+    func setupNavigation(title: String) {
+        navigationItem.title = title
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     func setupTableView() {

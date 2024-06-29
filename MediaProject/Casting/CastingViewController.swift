@@ -19,7 +19,7 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)
+    var movie: Movie = Movie(backdropPath: "", id: 0, originalTitle: "", overview: "", posterPath: "", mediaType: "", adult: false, title: "", originalLang: "", genreIds: [], popularity: 0, releaseDate: "", video: false, voteAverage: 0, voteCount: 0)
     lazy var overview: Overview = Overview(overview: "")
     private var castingList: [Actor] = [] {
         didSet {
@@ -30,7 +30,7 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
     private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        if let imagePath = movie.backdrop_path {
+        if let imagePath = movie.backdropPath {
             guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
             imageView.kf.setImage(with: url)
         }
@@ -40,8 +40,8 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray5
-        if let imagePath = movie.poster_path {
-            guard let url = URL(string: TMDB.imageBaseURL + imagePath) else { return imageView }
+        if let imagePath = movie.posterURL {
+            guard let url = URL(string: imagePath) else { return imageView }
             imageView.kf.setImage(with: url)
         }
         return imageView
@@ -102,11 +102,10 @@ class CastingViewController: BaseViewControllerNoLargeTitle {
     }
     
     
-    override func setupNavigation() {
-        navigationItem.title = movie.title
+    override func setupNavigation(title: String) {
+        super.setupNavigation(title: movie.title)
         let rightBarItem = UIBarButtonItem(title: "관련 콘텐츠", style: .plain, target: self, action: #selector(rightBarBtnTapped))
         navigationItem.rightBarButtonItem = rightBarItem
-        navigationItem.backButtonTitle = ""
     }
     
     override func setupUI() {
