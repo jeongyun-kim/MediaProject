@@ -19,14 +19,19 @@ class PosterViewController: BaseTableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var movie: Movie = Movie(backdrop_path: "", id: 0, original_title: "", overview: "", poster_path: "", media_type: "", adult: false, title: "", original_language: "", genre_ids: [], popularity: 0, release_date: "", video: false, vote_average: 0, vote_count: 0)    
+    var movie: Movie = Movie(backdropPath: "", id: 0, originalTitle: "", overview: "", posterPath: "", mediaType: "", adult: false, title: "", originalLang: "", genreIds: [], popularity: 0, releaseDate: "", video: false, voteAverage: 0, voteCount: 0)
     private var posterList: [[String]] = [[], [], []]
-
+    
     private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchResults()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func setupHierarchy() {
@@ -47,11 +52,10 @@ class PosterViewController: BaseTableViewController {
         tableView.separatorStyle = .none
     }
     
-    override func setupNavigation() {
-        navigationItem.title = movie.title
+    override func setupNavigation(title: String) {
+        super.setupNavigation(title: movie.title)
         let rightBarItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.moreCircle.rawValue), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = rightBarItem
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     private func fetchResults() {

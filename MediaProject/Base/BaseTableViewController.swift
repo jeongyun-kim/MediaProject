@@ -14,7 +14,7 @@ class BaseTableViewController: UIViewController, SetupView {
         setupHierarchy()
         setupConstraints()
         setupUI()
-        setupNavigation()
+        setupNavigation(title: "")
         setupTableView()
     }
     
@@ -30,8 +30,9 @@ class BaseTableViewController: UIViewController, SetupView {
         view.backgroundColor = .systemBackground
     }
     
-    func setupNavigation() {
-        
+    func setupNavigation(title: String) {
+        navigationItem.title = title
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     func setupTableView() {
