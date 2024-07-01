@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewControllerNoLargeTitle: UIViewController, SetupView {
+class BaseTableViewControllerNoLargeTitle: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

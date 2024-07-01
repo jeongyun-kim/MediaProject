@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainViewController: BaseViewControllerNoLargeTitle {
+class MainViewController: BaseTableViewControllerNoLargeTitle {
     
     // 영화
     private var movieList: [Movie] = [] {
@@ -70,6 +70,10 @@ class MainViewController: BaseViewControllerNoLargeTitle {
         let rightItem = UIBarButtonItem(image: UIImage(systemName: ButtonImageCase.mainRightBarButton.rawValue), style: .plain, target: self, action: #selector(searchBtnTapped))
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    @objc func nasaBtnTapped(_ sender: UIButton) {
+        
     }
     
     @objc func searchBtnTapped(_ sender: UIButton) {

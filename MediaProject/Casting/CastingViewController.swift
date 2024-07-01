@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CastingViewController: BaseViewControllerNoLargeTitle {
+class CastingViewController: BaseTableViewControllerNoLargeTitle {
     init(movie: Movie) {
         super.init(nibName: nil, bundle: nil)
         self.movie = movie
