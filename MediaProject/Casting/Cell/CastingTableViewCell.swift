@@ -31,9 +31,9 @@ class CastingTableViewCell: BaseTableViewCell {
     override func setupConstraints() {
         profileImageView.snp.makeConstraints {
             $0.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
-            $0.centerY.equalTo(contentView.snp.centerY)
-            $0.width.equalTo(80)
-            $0.height.equalTo(100)
+            $0.width.equalTo(contentView.safeAreaLayoutGuide).multipliedBy(0.2)
+            $0.height.equalTo(profileImageView.snp.width).multipliedBy(1.2)
+            $0.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(8)
         }
         
         actorNameLabel.snp.makeConstraints {
