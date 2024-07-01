@@ -14,11 +14,10 @@ final class NasaViewController: UIViewController {
     private var totalData: Double = 0
     private var buffer: Data? = Data() {
         didSet {
-            if let buffer = buffer {
-                let progress = Double(buffer.count) / totalData * 100
-                let result = round(progress*100)/100
-                baseView.progressLabel.text = "\(result)%"
-            }
+            guard let buffer = buffer else { return }
+            let progress = Double(buffer.count) / totalData * 100
+            let result = round(progress*100)/100
+            baseView.progressLabel.text = result.isNaN ? "0.0%" : "\(result)%"
         }
     }
     
@@ -39,6 +38,7 @@ final class NasaViewController: UIViewController {
     }
     
     @objc func loadBtnTapped(_ sender: UIButton) {
+        buffer = Data()
         fetchNasaImage()
         baseView.loadButton.isEnabled = false
     }

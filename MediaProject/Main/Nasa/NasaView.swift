@@ -34,7 +34,8 @@ final class NasaView: BaseView {
     
     override func setupConstraints() {
         nasaImageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.centerY.equalTo(snp.centerY).offset(-60)
             make.height.equalTo(400)
         }
         
