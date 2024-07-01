@@ -31,7 +31,7 @@ class CastingTableViewCell: BaseTableViewCell {
     override func setupConstraints() {
         profileImageView.snp.makeConstraints {
             $0.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
-            $0.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            $0.centerY.equalTo(contentView.snp.centerY)
             $0.width.equalTo(80)
             $0.height.equalTo(100)
         }
