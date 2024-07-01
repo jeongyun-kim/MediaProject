@@ -166,6 +166,8 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
     
     @objc func youtubeBtnTapped(_ sender: UIButton) {
         print(#function)
+        guard let youtubeURL = youtubeURL else { return }
+        transition(YoutubeViewController(movieTitle: movie.title, youtubeURL: youtubeURL), transionStyle: .push)
     }
     
     @objc func rightBarBtnTapped(_ sender: UIButton) {

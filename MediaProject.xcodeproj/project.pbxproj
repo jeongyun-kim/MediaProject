@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		E07564562C2C03EF0065413D /* TMDBRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564552C2C03EF0065413D /* TMDBRequestCase.swift */; };
 		E07564582C2C3FCD0065413D /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */; };
-		E075645A2C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */; };
+		E075645A2C2C50BB0065413D /* BaseTableViewControllerNoLargeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564592C2C50BB0065413D /* BaseTableViewControllerNoLargeTitle.swift */; };
 		E075648E2C32A6710065413D /* NasaRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075648D2C32A6700065413D /* NasaRequestCase.swift */; };
 		E07564902C32A6E70065413D /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075648F2C32A6E70065413D /* NasaViewController.swift */; };
 		E07564922C32A7320065413D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564912C32A7320065413D /* BaseView.swift */; };
 		E07564952C32A80C0065413D /* NasaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564942C32A80C0065413D /* NasaView.swift */; };
 		E07564972C32EDAE0065413D /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564962C32EDAE0065413D /* Youtube.swift */; };
+		E075649B2C32F7440065413D /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075649A2C32F7440065413D /* YoutubeViewController.swift */; };
+		E075649D2C32F7620065413D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075649C2C32F7620065413D /* BaseViewController.swift */; };
 		E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818D2C16D76000538021 /* AppDelegate.swift */; };
 		E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818F2C16D76000538021 /* SceneDelegate.swift */; };
 		E0A881972C16D76100538021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A881962C16D76100538021 /* Assets.xcassets */; };
@@ -60,12 +62,14 @@
 /* Begin PBXFileReference section */
 		E07564552C2C03EF0065413D /* TMDBRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequestCase.swift; sourceTree = "<group>"; };
 		E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
-		E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController + NoLargeTitle.swift"; sourceTree = "<group>"; };
+		E07564592C2C50BB0065413D /* BaseTableViewControllerNoLargeTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewControllerNoLargeTitle.swift; sourceTree = "<group>"; };
 		E075648D2C32A6700065413D /* NasaRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRequestCase.swift; sourceTree = "<group>"; };
 		E075648F2C32A6E70065413D /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
 		E07564912C32A7320065413D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		E07564942C32A80C0065413D /* NasaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaView.swift; sourceTree = "<group>"; };
 		E07564962C32EDAE0065413D /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
+		E075649A2C32F7440065413D /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
+		E075649C2C32F7620065413D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E0A8818A2C16D76000538021 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8818D2C16D76000538021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A8818F2C16D76000538021 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,14 @@
 			path = Nasa;
 			sourceTree = "<group>";
 		};
+		E07564992C32F71D0065413D /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				E075649A2C32F7440065413D /* YoutubeViewController.swift */,
+			);
+			path = Youtube;
+			sourceTree = "<group>";
+		};
 		E0A881812C16D76000538021 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +182,7 @@
 				E0A881F12C19D9DF00538021 /* Search */,
 				E0B5E5892C2961600024ADB8 /* Recommend */,
 				E0A881C02C1716DE00538021 /* Casting */,
+				E07564992C32F71D0065413D /* Youtube */,
 				E0A8818D2C16D76000538021 /* AppDelegate.swift */,
 				E0A8818F2C16D76000538021 /* SceneDelegate.swift */,
 				E0A881962C16D76100538021 /* Assets.xcassets */,
@@ -309,10 +322,11 @@
 			isa = PBXGroup;
 			children = (
 				E0B5E5B82C2AC3B20024ADB8 /* BaseTableViewController.swift */,
-				E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */,
+				E07564592C2C50BB0065413D /* BaseTableViewControllerNoLargeTitle.swift */,
 				E0B5E5BE2C2AC8DD0024ADB8 /* BaseTableViewCell.swift */,
 				E0B5E5C62C2AD5FE0024ADB8 /* BaseCollectionViewCell.swift */,
 				E07564912C32A7320065413D /* BaseView.swift */,
+				E075649C2C32F7620065413D /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -408,12 +422,14 @@
 				E0A881C42C1718CF00538021 /* Actor.swift in Sources */,
 				E0B5E5C72C2AD5FE0024ADB8 /* BaseCollectionViewCell.swift in Sources */,
 				E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */,
+				E075649B2C32F7440065413D /* YoutubeViewController.swift in Sources */,
 				E0B5E5CB2C2AD66E0024ADB8 /* SetupCell.swift in Sources */,
 				E0B5E5BB2C2AC4CB0024ADB8 /* Poster.swift in Sources */,
 				E0A881ED2C19D61800538021 /* Enums.swift in Sources */,
 				E0A881EB2C19D40000538021 /* CustomBorder.swift in Sources */,
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
+				E075649D2C32F7620065413D /* BaseViewController.swift in Sources */,
 				E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */,
 				E07564952C32A80C0065413D /* NasaView.swift in Sources */,
 				E07564902C32A6E70065413D /* NasaViewController.swift in Sources */,
@@ -423,7 +439,7 @@
 				E0BAE9932C216DA2008F795F /* OverviewTableViewCell.swift in Sources */,
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
-				E075645A2C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift in Sources */,
+				E075645A2C2C50BB0065413D /* BaseTableViewControllerNoLargeTitle.swift in Sources */,
 				E075648E2C32A6710065413D /* NasaRequestCase.swift in Sources */,
 				E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */,
 				E0B5E5C52C2AD00B0024ADB8 /* PosterCollectionViewCell.swift in Sources */,
