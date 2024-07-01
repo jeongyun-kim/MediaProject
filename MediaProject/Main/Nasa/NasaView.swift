@@ -10,7 +10,13 @@ import SnapKit
 
 final class NasaView: BaseView {
     let nasaImageView = CustomImageView(cornerRadius: 8)
-    let progressLabel = UILabel()
+    let progressLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "다운로드 진행도를 알 수 있습니다 🚀"
+        label.font = UIFont.systemFont(ofSize: 15)
+        return label
+    }()
     let loadButton: UIButton = {
         let button = UIButton(configuration: .filled())
         button.backgroundColor = .tintColor
@@ -46,11 +52,5 @@ final class NasaView: BaseView {
     
     override func setupUI() {
         super.setupUI()
-        progressLabel.backgroundColor = .blue
-        loadButton.addTarget(self, action: #selector(loadBtnTapped), for: .touchUpInside)
-    }
-    
-    @objc func loadBtnTapped(_ sender: UIButton) {
-        print(#function)
     }
 }
