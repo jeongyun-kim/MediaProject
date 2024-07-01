@@ -40,6 +40,7 @@ final class NasaViewController: UIViewController {
     
     @objc func loadBtnTapped(_ sender: UIButton) {
         fetchNasaImage()
+        baseView.loadButton.isEnabled = false
     }
     
     private func fetchNasaImage() {
@@ -80,10 +81,12 @@ extension NasaViewController: URLSessionDataDelegate {
     // 3. complete(error)
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
         if let error = error {
+            baseView.nasaImageView.image = UIImage(systemName: ButtonImageCase.mainLeftBarButton.rawValue)
             showToast(message: NasaRequestCase.image.errorMessage)
         } else {
             guard let buffer = buffer else { return }
             baseView.nasaImageView.image = UIImage(data: buffer)
         }
+        baseView.loadButton.isEnabled = true
     }
 }
