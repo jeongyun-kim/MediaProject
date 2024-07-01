@@ -21,6 +21,7 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
     
     var movie: Movie = Movie(backdropPath: "", id: 0, originalTitle: "", overview: "", posterPath: "", mediaType: "", adult: false, title: "", originalLang: "", genreIds: [], popularity: 0, releaseDate: "", video: false, voteAverage: 0, voteCount: 0)
     lazy var overview: Overview = Overview(overview: "")
+    private var youtubeURL: URL?
     private var castingList: [Actor] = [] {
         didSet {
             tableView.reloadData()
@@ -46,12 +47,21 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
         }
         return imageView
     }()
+    private let youtubeButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: ButtonImageCase.youtube.rawValue)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        return button
+    }()
     private lazy var movieTitleLabel = CustomLabel(text: movie.title, size: 24, color: .white, weight: .bold)
     private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCasting()
+        fetchData()
         overview = Overview(overview: movie.overview)
     }
     
@@ -63,6 +73,7 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
         view.addSubview(mainImageView)
         view.addSubview(movieTitleLabel)
         view.addSubview(posterImageView)
+        view.addSubview(youtubeButton)
         view.addSubview(tableView)
     }
     
@@ -84,6 +95,11 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
             $0.bottom.equalTo(mainImageView.snp.bottom).inset(8)
         }
         
+        youtubeButton.snp.makeConstraints { make in
+            make.size.equalTo(36)
+            make.bottom.trailing.equalTo(mainImageView).inset(12)
+        }
+        
         tableView.snp.makeConstraints {
             $0.top.equalTo(mainImageView.snp.bottom).offset(12)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -98,8 +114,7 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
         tableView.register(OverviewTableViewCell.self, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         tableView.register(CastingTableViewCell.self, forCellReuseIdentifier: CastingTableViewCell.identifier)
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 120
     }
     
     
@@ -111,17 +126,46 @@ class CastingViewController: BaseTableViewControllerNoLargeTitle {
     
     override func setupUI() {
         view.backgroundColor = .systemBackground
+        youtubeButton.addTarget(self, action: #selector(youtubeBtnTapped), for: .touchUpInside)
     }
 
-    private func fetchCasting() {
-        NetworkService.shared.fetchCastingData(movieId: movie.id) { data, error in
-            if let data = data {
-                self.castingList = data.cast
-            } else {
-                guard let errorMessage = error else { return }
-                self.showToast(message: errorMessage)
+    private func fetchData() {
+        let group = DispatchGroup()
+        
+        // 캐스팅 정보 받아오기
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkService.shared.fetchCastingData(movieId: self.movie.id) { data, error in
+                if let data = data {
+                    self.castingList = data.cast
+                } else {
+                    guard let errorMessage = error else { return }
+                    self.showToast(message: errorMessage)
+                }
+                group.leave()
             }
         }
+        // Youtube 링크 받아오기
+        // - 따로 에러 메시지 필요없으므로 에러 처리 X
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkService.shared.fetchYoutubeURL(movieId: self.movie.id) { data, error in
+                if let data = data, data.results.count > 0 { // 데이터가 있고 링크 정보가 1개라도 있다면
+                    guard let url = URL(string: Youtube.youtubeBaseURL + data.results[0].key) else { return }
+                    self.youtubeURL = url
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            let result = self.youtubeURL != nil // youtube 링크가 있는지 확인
+            self.youtubeButton.isHidden = !result // youtube 링크가 있으면(true) -> isHidden = false
+        }
+    }
+    
+    @objc func youtubeBtnTapped(_ sender: UIButton) {
+        print(#function)
     }
     
     @objc func rightBarBtnTapped(_ sender: UIButton) {

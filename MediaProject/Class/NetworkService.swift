@@ -20,7 +20,7 @@ class NetworkService {
             switch response.result {
             case .success(let value):
                 completionHandler(value, nil)
-            case .failure(let error):
+            case .failure(_):
                 completionHandler(nil, request.errorMessage)
             }
         }
@@ -54,5 +54,9 @@ extension NetworkService: NetworkProtocol {
     
     func fetchPosterData(movieId: Int, completionHandler: @escaping (MovieImageContainer?, String?) -> Void) {
         fetchResult(request: .moviePoster(movieId: movieId), completionHandler: completionHandler)
+    }
+    
+    func fetchYoutubeURL(movieId: Int, completionHandler: @escaping (YoutubeContainer?, String?) -> Void) {
+        fetchResult(request: .youtube(movieId: movieId), completionHandler: completionHandler)
     }
 }

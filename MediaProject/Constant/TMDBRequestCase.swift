@@ -16,6 +16,7 @@ enum TMDBRequestCase {
     case moviePoster(movieId: Int)
     case similarMoviePoster(movieId: Int)
     case recommendMoviePoster(movieId: Int)
+    case youtube(movieId: Int)
     
     var baseURL: String {
         return TMDB.baseURL
@@ -44,6 +45,9 @@ enum TMDBRequestCase {
         case .casting(let movieId):
             guard let castingURL = URL(string: baseURL + "movie/\(movieId)/credits") else { return nil }
             return castingURL
+        case .youtube(let movieId):
+            guard let youtubeURL = URL(string: baseURL + "movie/\(movieId)/videos") else { return nil }
+            return youtubeURL
         }
     }
     
@@ -57,7 +61,7 @@ enum TMDBRequestCase {
     
     var params: Parameters {
         switch self {
-        case .movie, .genre, .casting, .similarMoviePoster, .recommendMoviePoster:
+        case .movie, .genre, .casting, .similarMoviePoster, .recommendMoviePoster, .youtube:
             return ["language": "ko-KR"]
         case .search(let query, let page):
             return ["query": query, "include_adult": false, "language": "ko-KR", "page": page]

@@ -19,6 +19,7 @@ enum ButtonImageCase: String {
     case moreCircle = "ellipsis.circle"
     case overviewOpen = "chevron.down"
     case overviewClose = "chevron.up"
+    case youtube = "link.circle.fill"
 }
 
 enum LabelText: String {

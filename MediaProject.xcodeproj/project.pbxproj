@@ -14,6 +14,7 @@
 		E07564902C32A6E70065413D /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075648F2C32A6E70065413D /* NasaViewController.swift */; };
 		E07564922C32A7320065413D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564912C32A7320065413D /* BaseView.swift */; };
 		E07564952C32A80C0065413D /* NasaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564942C32A80C0065413D /* NasaView.swift */; };
+		E07564972C32EDAE0065413D /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564962C32EDAE0065413D /* Youtube.swift */; };
 		E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818D2C16D76000538021 /* AppDelegate.swift */; };
 		E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818F2C16D76000538021 /* SceneDelegate.swift */; };
 		E0A881972C16D76100538021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A881962C16D76100538021 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		E075648F2C32A6E70065413D /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
 		E07564912C32A7320065413D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		E07564942C32A80C0065413D /* NasaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaView.swift; sourceTree = "<group>"; };
+		E07564962C32EDAE0065413D /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
 		E0A8818A2C16D76000538021 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8818D2C16D76000538021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A8818F2C16D76000538021 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				E0A881C32C1718CF00538021 /* Actor.swift */,
 				E0B5E5BA2C2AC4CB0024ADB8 /* Poster.swift */,
 				E0B5E5C22C2ACD550024ADB8 /* MovieImageContainer.swift */,
+				E07564962C32EDAE0065413D /* Youtube.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				E0B5E5D22C2AE90F0024ADB8 /* TableViewEnums.swift in Sources */,
 				E07564922C32A7320065413D /* BaseView.swift in Sources */,
 				E0B5E5C32C2ACD550024ADB8 /* MovieImageContainer.swift in Sources */,
+				E07564972C32EDAE0065413D /* Youtube.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
 				E07564562C2C03EF0065413D /* TMDBRequestCase.swift in Sources */,
 				E0B5E5B92C2AC3B20024ADB8 /* BaseTableViewController.swift in Sources */,
