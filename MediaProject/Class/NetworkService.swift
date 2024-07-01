@@ -14,7 +14,7 @@ class NetworkService {
     
     typealias CompletionHandler<T: Decodable> = (T?, String?) -> Void
     
-    func fetchResult<T: Decodable>(request: NetworkRequestCase, completionHandler: @escaping CompletionHandler<T>) {
+    func fetchResult<T: Decodable>(request: TMDBRequestCase, completionHandler: @escaping CompletionHandler<T>) {
         guard let url = request.endPoint else { return }
         AF.request(url, parameters: request.params, encoding: URLEncoding.queryString, headers: request.header).responseDecodable(of: T.self) { response in
             switch response.result {
