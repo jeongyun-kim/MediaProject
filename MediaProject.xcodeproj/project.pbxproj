@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E07564562C2C03EF0065413D /* NetworkRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564552C2C03EF0065413D /* NetworkRequestCase.swift */; };
+		E07564562C2C03EF0065413D /* TMDBRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564552C2C03EF0065413D /* TMDBRequestCase.swift */; };
 		E07564582C2C3FCD0065413D /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */; };
 		E075645A2C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */; };
+		E075648E2C32A6710065413D /* NasaRequestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075648D2C32A6700065413D /* NasaRequestCase.swift */; };
+		E07564902C32A6E70065413D /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075648F2C32A6E70065413D /* NasaViewController.swift */; };
+		E07564922C32A7320065413D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564912C32A7320065413D /* BaseView.swift */; };
+		E07564952C32A80C0065413D /* NasaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07564942C32A80C0065413D /* NasaView.swift */; };
 		E0A8818E2C16D76000538021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818D2C16D76000538021 /* AppDelegate.swift */; };
 		E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8818F2C16D76000538021 /* SceneDelegate.swift */; };
 		E0A881972C16D76100538021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A881962C16D76100538021 /* Assets.xcassets */; };
@@ -53,9 +57,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E07564552C2C03EF0065413D /* NetworkRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestCase.swift; sourceTree = "<group>"; };
+		E07564552C2C03EF0065413D /* TMDBRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequestCase.swift; sourceTree = "<group>"; };
 		E07564572C2C3FCD0065413D /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController + NoLargeTitle.swift"; sourceTree = "<group>"; };
+		E075648D2C32A6700065413D /* NasaRequestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRequestCase.swift; sourceTree = "<group>"; };
+		E075648F2C32A6E70065413D /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
+		E07564912C32A7320065413D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		E07564942C32A80C0065413D /* NasaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaView.swift; sourceTree = "<group>"; };
 		E0A8818A2C16D76000538021 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8818D2C16D76000538021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A8818F2C16D76000538021 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +128,15 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		E07564932C32A8040065413D /* Nasa */ = {
+			isa = PBXGroup;
+			children = (
+				E075648F2C32A6E70065413D /* NasaViewController.swift */,
+				E07564942C32A80C0065413D /* NasaView.swift */,
+			);
+			path = Nasa;
+			sourceTree = "<group>";
+		};
 		E0A881812C16D76000538021 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +192,7 @@
 		E0A881AC2C16DA8500538021 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E07564932C32A8040065413D /* Nasa */,
 				E0A881B62C16E89100538021 /* Cell */,
 				E0A881A52C16D9FF00538021 /* MainViewController.swift */,
 			);
@@ -251,7 +269,8 @@
 				E0A881EC2C19D61800538021 /* Enums.swift */,
 				E0B5E5CF2C2AE8B10024ADB8 /* CollectionViewEnums.swift */,
 				E0B5E5D12C2AE90F0024ADB8 /* TableViewEnums.swift */,
-				E07564552C2C03EF0065413D /* NetworkRequestCase.swift */,
+				E07564552C2C03EF0065413D /* TMDBRequestCase.swift */,
+				E075648D2C32A6700065413D /* NasaRequestCase.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -287,9 +306,10 @@
 			isa = PBXGroup;
 			children = (
 				E0B5E5B82C2AC3B20024ADB8 /* BaseTableViewController.swift */,
+				E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */,
 				E0B5E5BE2C2AC8DD0024ADB8 /* BaseTableViewCell.swift */,
 				E0B5E5C62C2AD5FE0024ADB8 /* BaseCollectionViewCell.swift */,
-				E07564592C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift */,
+				E07564912C32A7320065413D /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -392,6 +412,8 @@
 				E0A881AB2C16DA4F00538021 /* SetupView.swift in Sources */,
 				E0A881A42C16D95A00538021 /* APIKey.swift in Sources */,
 				E0BAE9B52C268E79008F795F /* NetworkService.swift in Sources */,
+				E07564952C32A80C0065413D /* NasaView.swift in Sources */,
+				E07564902C32A6E70065413D /* NasaViewController.swift in Sources */,
 				E0B0B68D2C19E23700A24154 /* CollectionView + Extension.swift in Sources */,
 				E0A881902C16D76000538021 /* SceneDelegate.swift in Sources */,
 				E0A881F72C19DC6500538021 /* CastingViewController.swift in Sources */,
@@ -399,12 +421,14 @@
 				E0A881D52C18500900538021 /* SearchViewController.swift in Sources */,
 				E0A881B82C16E89C00538021 /* MovieTableViewCell.swift in Sources */,
 				E075645A2C2C50BB0065413D /* BaseViewController + NoLargeTitle.swift in Sources */,
+				E075648E2C32A6710065413D /* NasaRequestCase.swift in Sources */,
 				E0BAE9B72C26974E008F795F /* NetworkProtocol.swift in Sources */,
 				E0B5E5C52C2AD00B0024ADB8 /* PosterCollectionViewCell.swift in Sources */,
 				E0B5E5D22C2AE90F0024ADB8 /* TableViewEnums.swift in Sources */,
+				E07564922C32A7320065413D /* BaseView.swift in Sources */,
 				E0B5E5C32C2ACD550024ADB8 /* MovieImageContainer.swift in Sources */,
 				E0A881CA2C1723E800538021 /* CastingTableViewCell.swift in Sources */,
-				E07564562C2C03EF0065413D /* NetworkRequestCase.swift in Sources */,
+				E07564562C2C03EF0065413D /* TMDBRequestCase.swift in Sources */,
 				E0B5E5B92C2AC3B20024ADB8 /* BaseTableViewController.swift in Sources */,
 				E0A881A62C16D9FF00538021 /* MainViewController.swift in Sources */,
 				E0BAE9BB2C2698F1008F795F /* LocalNotificationCenter.swift in Sources */,

@@ -13,7 +13,7 @@ enum CornerRadius {
 }
 
 enum ButtonImageCase: String {
-    case mainLeftBarButton = "list.bullet"
+    case mainLeftBarButton = "star.fill"
     case mainRightBarButton = "magnifyingglass"
     case more = "ellipsis"
     case moreCircle = "ellipsis.circle"
