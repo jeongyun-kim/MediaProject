@@ -37,8 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
-        
-        // 앱이 백그라운드로 진입했을 때, 예약된 알림을 받아올 수 있는 상태인지 확인하기 
+        // 앱이 백그라운드로 진입했을 때, 예약된 알림을 받아올 수 있는 상태인지 확인하기
         UNUserNotificationCenter.current().getNotificationSettings { setting in
             switch setting.authorizationStatus {
             case .notDetermined:
