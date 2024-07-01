@@ -25,6 +25,7 @@ class YoutubeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadWebView()
     }
     
     override func setupHierarchy() {
@@ -39,5 +40,16 @@ class YoutubeViewController: BaseViewController {
     
     override func setupUI() {
         super.setupUI()
+        
+    }
+    
+    override func setupNavigation(_ title: String) {
+        super.setupNavigation(movieTitle)
+    }
+    
+    private func loadWebView() {
+        guard let url = youtubeURL else { return }
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
 }
