@@ -34,6 +34,7 @@ final class NasaViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // 다운로드 완료될 때까지는 냅뒀다가 완료되면 리소스 정리
+        guard let session else { return }
         session.finishTasksAndInvalidate()
     }
     
